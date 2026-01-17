@@ -1,0 +1,187 @@
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+
+namespace PetShopApp
+{
+    public partial class LoginForm : Form
+    {
+        private TextBox txtUser;
+        private TextBox txtPass;
+        private Button btnTogglePass; // Notun
+        private Button btnForgotPass; // Notun
+        private bool isPassHidden = true;
+        private string _userType;
+        private Panel pnlHeader;
+        private Panel pnlFooter;
+
+
+        string connString = $@"Data Source={Environment.MachineName}\SQLEXPRESS; Initial Catalog=PetShopManagementDB; Integrated Security=True";
+
+        public LoginForm(string userType = "Admin")
+        {
+            InitializeComponent();
+            _userType = userType;
+            ConfigureForm(userType);
+            CreateLoginUI(userType);
+        }
+
+        private void ConfigureForm(string title)
+        {
+            this.Text = title + " Login Portal";
+            this.Size = new Size(420, 600); // Size ektu baralam shob fit korar jonno
+            this.BackColor = Color.White;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
+        }
+
+        private void CreateLoginUI(string userType)
+        {
+            this.Controls.Clear();
+
+            // --- 1. Header Section (Premium Logo & Title) ---
+            pnlHeader = new Panel();
+            pnlHeader.Dock = DockStyle.Top;
+            pnlHeader.Height = 130;
+            pnlHeader.BackColor = Color.FromArgb(44, 62, 80);
+
+            Label lblLogo = new Label();
+            lblLogo.Text = "🐾";
+            lblLogo.Font = new Font("Segoe UI", 40);
+            lblLogo.ForeColor = Color.FromArgb(230, 126, 34); // Orange
+            lblLogo.Size = new Size(420, 70);
+            lblLogo.Location = new Point(0, 10);
+            lblLogo.TextAlign = ContentAlignment.MiddleCenter;
+
+            Label lblTitle = new Label();
+            lblTitle.Text = userType.ToUpper() + " LOGIN PORTAL";
+            lblTitle.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.Size = new Size(420, 30);
+            lblTitle.Location = new Point(0, 85);
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+
+            pnlHeader.Controls.Add(lblLogo);
+            pnlHeader.Controls.Add(lblTitle);
+            this.Controls.Add(pnlHeader);
+
+            // --- 2. Input Section ---
+            int startX = 60;
+
+            Label lblUser = new Label { Text = "Username", Location = new Point(startX, 150), AutoSize = true, Font = new Font("Segoe UI", 10, FontStyle.Bold), ForeColor = Color.DimGray };
+            txtUser = new TextBox { Width = 300, Font = new Font("Segoe UI", 12), Location = new Point(startX, 175), BorderStyle = BorderStyle.FixedSingle };
+
+            Label lblPass = new Label { Text = "Password", Location = new Point(startX, 230), AutoSize = true, Font = new Font("Segoe UI", 10, FontStyle.Bold), ForeColor = Color.DimGray };
+            txtPass = new TextBox { Width = 255, Font = new Font("Segoe UI", 12), Location = new Point(startX, 255), PasswordChar = '●', BorderStyle = BorderStyle.FixedSingle };
+
+            // --- TOGGLE PASSWORD BUTTON (👁) ---
+            btnTogglePass = new Button
+            {
+                Text = "👁",
+                Size = new Size(45, 29),
+                Location = new Point(startX + 255, 255), // txtPass er thik pashe
+                BackColor = Color.White,
+                FlatStyle = FlatStyle.Popup,
+                Cursor = Cursors.Hand
+            };
+            btnTogglePass.FlatAppearance.BorderSize = 0;
+            btnTogglePass.Click += (s, e) => {
+                isPassHidden = !isPassHidden;
+                txtPass.PasswordChar = isPassHidden ? '●' : '\0';
+                btnTogglePass.Text = isPassHidden ? "👁" : "🔒";
+            };
+
+            // --- 3. LOGIN BUTTON ---
+            Button btnLogin = new Button
+            {
+                Text = "LOGIN NOW",
+                Size = new Size(300, 50),
+                Location = new Point(startX, 310),
+                BackColor = Color.FromArgb(230, 126, 34),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                Cursor = Cursors.Hand
+            };
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.Click += HandleLoginAction;
+            this.AcceptButton = btnLogin;
+
+            // Forgot Password (New Design)
+            btnForgotPass = new Button();
+            btnForgotPass.Text = "Forgot Password?";
+            btnForgotPass.Size = new Size(280, 25);
+            btnForgotPass.Location = new Point(75, 370);
+            btnForgotPass.FlatStyle = FlatStyle.Flat;
+            btnForgotPass.ForeColor = Color.FromArgb(52, 152, 219);
+            btnForgotPass.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            btnForgotPass.Cursor = Cursors.Hand;
+            btnForgotPass.TextAlign = ContentAlignment.MiddleRight;
+            btnForgotPass.FlatAppearance.BorderSize = 0;
+            btnForgotPass.FlatAppearance.MouseOverBackColor = Color.White;
+            btnForgotPass.Click += new EventHandler(BtnForgotPass_Click);
+
+            this.Controls.Add(lblUser); this.Controls.Add(txtUser);
+            this.Controls.Add(lblPass); this.Controls.Add(txtPass);
+            this.Controls.Add(btnTogglePass);
+            this.Controls.Add(btnLogin);
+            this.Controls.Add(btnForgotPass);
+
+            // --- 5. Footer Section ---
+            Panel pnlFooter = new Panel { Dock = DockStyle.Bottom, Height = 60, BackColor = Color.FromArgb(44, 62, 80) };
+            Label lblFooterText = new Label { Text = "Premium Pet Care © 2026", ForeColor = Color.White, Font = new Font("Segoe UI", 9, FontStyle.Italic), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
+            pnlFooter.Controls.Add(lblFooterText);
+            this.Controls.Add(pnlFooter);
+        }
+
+        private void BtnForgotPass_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Mamma, eikhaney amra Password Recovery system boshabo pore!", "Forgot Password");
+        }
+
+        // DATABASE LOGIN LOGIC (Tomar dewa logic-ta eikhane thakbe)
+        private void HandleLoginAction(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtUser.Text.Trim()) || string.IsNullOrEmpty(txtPass.Text))
+            {
+                MessageBox.Show("Mama, Username ar Password dorkar!", "Opps", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection con = new SqlConnection(connString))
+            {
+                try
+                {
+                    con.Open();
+                    string query = "SELECT UserRole FROM Users WHERE Username=@user AND Password=@pass";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@user", txtUser.Text.Trim());
+                    cmd.Parameters.AddWithValue("@pass", txtPass.Text.Trim());
+
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    if (dr.Read())
+                    {
+                        string roleFromDB = dr["UserRole"].ToString();
+                        if (roleFromDB.Equals(_userType, StringComparison.OrdinalIgnoreCase))
+                        {
+                            MessageBox.Show($"🐾 Welcome Back, {roleFromDB}!", "Success");
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Mama, tumi to {roleFromDB}! Eikhan diye dhukte parbe na.", "Role Mismatch");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Oops! Username ba Password thik nai mama.", "Login Failed");
+                    }
+                }
+                catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+            }
+        }
+    }
+}
