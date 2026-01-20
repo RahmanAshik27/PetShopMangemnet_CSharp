@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -22,6 +24,13 @@ namespace PetShopApp
         private List<ItemStat> topItems = new List<ItemStat>();
         private FlowLayoutPanel flowReviewList;
         private Panel pnlSpotlight;
+
+        
+        string[] partnerList = { "Pathao Fast", "FoodPanda Go", "RedX Logistics", "Jhinku BD", "Shop Pickup" };
+
+        // --- SHUDHU NAME CHANGE KORLAM, KAJ SAME ---
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr MakeRounded(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
         public AdminDashboard()
         {
@@ -465,9 +474,15 @@ namespace PetShopApp
                     }
 
                     // 2. RIGHT & BOTTOM: Top 6 Items
-                    string itemQuery = @"SELECT TOP 6 Category, Breed, ISNULL(SellCount, 0) as SellCount 
-                                        FROM Inventory 
-                                        ORDER BY ISNULL(SellCount, 0) DESC";
+                    string itemQuery = @"
+                    SELECT Category, Breed, SellCount 
+                    FROM (
+                        SELECT Category, Breed, ISNULL(SellCount, 0) as SellCount,
+                               ROW_NUMBER() OVER(PARTITION BY Category ORDER BY ISNULL(SellCount, 0) DESC) as Rank
+                        FROM Inventory
+                    ) AS RankedInventory
+                    WHERE Rank = 1 AND SellCount > 0
+                    ORDER BY SellCount DESC";
 
                     SqlCommand cmd2 = new SqlCommand(itemQuery, conn);
                     using (SqlDataReader reader2 = cmd2.ExecuteReader())
@@ -574,13 +589,19 @@ namespace PetShopApp
             foreach (var item in topItems) if (item.Sales > maxSales) maxSales = item.Sales;
             if (maxSales == 0) maxSales = 1;
 
+            // BuildProDashboard মেথডের লুপের ভেতরে
             for (int j = 0; j < topItems.Count; j++)
             {
                 int row = j / 3;
                 int col = j % 3;
+
+                // ক্যাটাগরি অনুযায়ী প্রগ্রেস বার উইডথ বের করা
                 int progressWidth = (int)((topItems[j].Sales / (float)maxSales) * 230);
 
-                AddItemStat(topItems[j].Category + ": " + topItems[j].ItemName,
+                // টাইটেলটা এভাবে দিলে দেখতে জোস লাগবে: "DOG: LABRADOR"
+                string displayTitle = $"{topItems[j].Category.ToUpper()}: {topItems[j].ItemName.ToUpper()}";
+
+                AddItemStat(displayTitle,
                            topItems[j].Sales,
                            progressWidth,
                            itemColors[j % itemColors.Length],
@@ -682,18 +703,190 @@ namespace PetShopApp
         }
 
 
-        private void OpenDeliveryTracking(object sender, EventArgs e) { ResetButtonColors(sender); MessageBox.Show("Tracking Page Coming!"); }
+        private void OpenDeliveryTracking(object sender, EventArgs e) 
+        { 
+            ResetButtonColors(sender);
+            pnlMain.Controls.Clear();
+            pnlMain.BackColor = Color.FromArgb(10, 10, 25); // তোর পছন্দের Midnight Blue
+            LoadLogisticsHub();
+        }
+        private void LoadLogisticsHub()
+        {
+            pnlMain.Controls.Clear();
+            Label lblTitle = new Label { Text = "LOGISTICS INTELLIGENCE & PARTNER HUB", Font = new Font("Segoe UI Black", 18, FontStyle.Bold), ForeColor = Color.Cyan, Location = new Point(25, 20), AutoSize = true };
+            pnlMain.Controls.Add(lblTitle);
+
+            Panel pnlGraph = new Panel { Size = new Size(460, 280), Location = new Point(25, 75), BackColor = Color.FromArgb(18, 18, 40) };
+            pnlGraph.Paint += DrawPieChart;
+            pnlMain.Controls.Add(pnlGraph);
+
+            AddDualManagementSection(510, 75);
+            LoadDeliveryCards(25, 385);
+        }
+
+        private void DrawPieChart(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+            var partners = new System.Collections.Generic.List<(string Name, float Count)>();
+            try
+            {
+                using (SqlConnection c = new SqlConnection(connString))
+                {
+                    c.Open();
+                    SqlDataReader r = new SqlCommand("SELECT AgentName, DeliveryCount FROM DeliveryPartners", c).ExecuteReader();
+                    while (r.Read())
+                    {
+                        partners.Add((r["AgentName"].ToString(), Convert.ToSingle(r["DeliveryCount"])));
+                    }
+                }
+            }
+            catch { return; }
+
+            if (partners.Count == 0) return;
+
+            float totalJobs = partners.Sum(x => x.Count);
+            float startAngle = -90;
+
+            // Chart Area (Ektu compact kora hoyeche jate shundor lage)
+            Rectangle chartRect = new Rectangle(40, 50, 180, 180);
+            Color[] sliceColors = { Color.Cyan, Color.HotPink, Color.Orange, Color.MediumSlateBlue, Color.LimeGreen };
+
+            for (int i = 0; i < partners.Count; i++)
+            {
+                float sweepAngle = (totalJobs > 0) ? (partners[i].Count / totalJobs) * 360 : 360f / partners.Count;
+                Color currentColor = sliceColors[i % sliceColors.Length];
+
+                // --- MODERN DOUGHNUT RING ---
+                using (Pen p = new Pen(currentColor, 35))
+                { // Ring thickness 12
+                    g.DrawArc(p, chartRect, startAngle, sweepAngle);
+                }
+
+                // --- CLEAN & COMPACT LEGEND ---
+                int ly = 65 + (i * 38);
+
+                // Chhotto Color Indicator (Vertical bar style)
+                g.FillRectangle(new SolidBrush(currentColor), 260, ly + 4, 4, 25);
+
+                // Partner name (Sleek White/Orange combo)
+                g.DrawString(partners[i].Name.ToUpper(), new Font("Segoe UI", 8.5f, FontStyle.Bold), Brushes.Orange, 275, ly);
+
+                float percent = (totalJobs > 0) ? (partners[i].Count / totalJobs) * 100 : 0;
+                // Percentage (Gray font jate choke na lage)
+                g.DrawString($"{percent:0}% Share • {partners[i].Count} Jobs", new Font("Segoe UI", 7.5f), Brushes.LightGray, 275, ly + 15);
+
+                startAngle += sweepAngle;
+            }
+
+            // --- CENTER TEXT (Total Jobs) ---
+            g.DrawString(totalJobs.ToString(), new Font("Segoe UI Black", 16), Brushes.Cyan, 110, 130);
+            g.DrawString("TOTAL", new Font("Segoe UI Bold", 7), Brushes.Gray, 118, 115);
+
+            // Panel Title (Subtle)
+            g.DrawString("PARTNER ANALYTICS", new Font("Segoe UI Black", 8), Brushes.DarkCyan, 15, 15);
+        }
+
+        private void AddDualManagementSection(int x, int y)
+        {
+            Panel pnl = new Panel { Size = new Size(320, 280), Location = new Point(x, y), BackColor = Color.FromArgb(25, 25, 55) };
+            // Puran name CreateRoundRectRgn theke MakeRounded e replace kora holo logic thik rakhte
+            pnl.Region = Region.FromHrgn(MakeRounded(0, 0, pnl.Width, pnl.Height, 20, 20));
+
+            Label l1 = new Label { Text = "REGISTER NEW CONTRACT", ForeColor = Color.SpringGreen, Location = new Point(20, 15), AutoSize = true, Font = new Font("Segoe UI Bold", 9) };
+            TextBox tAdd = CreateSuggestBox(20, 40);
+            Button bAdd = new Button { Text = "SEND ADD REQUEST", Size = new Size(275, 35), Location = new Point(20, 80), FlatStyle = FlatStyle.Flat, BackColor = Color.SeaGreen, ForeColor = Color.White };
+
+            Label l2 = new Label { Text = "TERMINATE CONTRACT", ForeColor = Color.Tomato, Location = new Point(20, 145), AutoSize = true, Font = new Font("Segoe UI Bold", 9) };
+            TextBox tRem = CreateSuggestBox(20, 170);
+            Button bRem = new Button { Text = "SEND TERMINATE REQUEST", Size = new Size(275, 35), Location = new Point(20, 210), FlatStyle = FlatStyle.Flat, BackColor = Color.Maroon, ForeColor = Color.White };
+
+            bAdd.Click += (s, e) => { if (!string.IsNullOrEmpty(tAdd.Text)) ShowMamaPopup(tAdd.Text, "ADD"); };
+            bRem.Click += (s, e) => { if (!string.IsNullOrEmpty(tRem.Text)) ShowMamaPopup(tRem.Text, "TERMINATE"); };
+
+            pnl.Controls.AddRange(new Control[] { l1, tAdd, bAdd, l2, tRem, bRem });
+            pnlMain.Controls.Add(pnl);
+        }
+
+        private TextBox CreateSuggestBox(int x, int y)
+        {
+            TextBox tb = new TextBox { Size = new Size(275, 30), Location = new Point(x, y), BackColor = Color.FromArgb(40, 40, 75), ForeColor = Color.White, BorderStyle = BorderStyle.FixedSingle, AutoCompleteMode = AutoCompleteMode.SuggestAppend, AutoCompleteSource = AutoCompleteSource.CustomSource };
+            AutoCompleteStringCollection sc = new AutoCompleteStringCollection();
+            sc.AddRange(partnerList);
+            tb.AutoCompleteCustomSource = sc;
+            return tb;
+        }
+
+        private void ShowMamaPopup(string name, string mode)
+        {
+            Panel overlay = new Panel { Size = pnlMain.Size, Location = new Point(0, 0), BackColor = Color.FromArgb(210, 0, 0, 0) };
+            pnlMain.Controls.Add(overlay); overlay.BringToFront();
+
+            Panel popup = new Panel { Size = new Size(600, 350), BackColor = Color.FromArgb(30, 30, 55), Location = new Point(135, 100) };
+            popup.Region = Region.FromHrgn(MakeRounded(0, 0, popup.Width, popup.Height, 30, 30));
+
+            Panel header = new Panel { Dock = DockStyle.Top, Height = 60, BackColor = mode == "ADD" ? Color.SeaGreen : Color.Firebrick };
+            Label lblHead = new Label { Text = "PET SHOP OFFICIAL ADMIN NOTIFICATION", ForeColor = Color.White, Font = new Font("Segoe UI Black", 12), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
+            header.Controls.Add(lblHead);
+
+            PictureBox picLogo = new PictureBox { Size = new Size(200, 200), Location = new Point(30, 85), SizeMode = PictureBoxSizeMode.Zoom, Image = Properties.Resources.pet_logo };
+            Label lblMsg = new Label { Text = $"OFFICIAL REQUEST FOR:\n{name.ToUpper()}\n\nYour request to {mode} pnlMain partner contract has been sent.\n\nVerification required within 24 hours.", ForeColor = Color.Gainsboro, Font = new Font("Segoe UI Semibold", 12), Location = new Point(250, 90), Size = new Size(320, 120), TextAlign = ContentAlignment.MiddleLeft };
+            Button btnOk = new Button { Text = "ACKNOWLEDGE REQUEST", Size = new Size(280, 45), Location = new Point(270, 220), FlatStyle = FlatStyle.Flat, ForeColor = Color.Cyan, Font = new Font("Segoe UI Bold", 10), Cursor = Cursors.Hand };
+            btnOk.Click += (s, e) => { pnlMain.Controls.Remove(overlay); };
+
+            Label lblDev = new Label { Text = "MR. DEVELOPER", ForeColor = Color.Orange, Font = new Font("Segoe UI Black", 18, FontStyle.Bold), Location = new Point(10, 280), Size = new Size(280, 30), TextAlign = ContentAlignment.MiddleCenter };
+
+            popup.Controls.AddRange(new Control[] { header, picLogo, lblMsg, btnOk, lblDev });
+            overlay.Controls.Add(popup);
+        }
+
+        private void LoadDeliveryCards(int x, int y)
+        {
+            Label lblSection = new Label { Text = "REAL-TIME LOGISTICS PARTNER METRICS", Font = new Font("Segoe UI Black", 10), ForeColor = Color.DarkGray, Location = new Point(x, y - 30), AutoSize = true };
+            pnlMain.Controls.Add(lblSection);
+
+            int sx = x;
+            using (SqlConnection c = new SqlConnection(connString))
+            {
+                c.Open();
+                SqlDataReader r = new SqlCommand("SELECT AgentName, DeliveryCount FROM DeliveryPartners", c).ExecuteReader();
+                while (r.Read() && sx < 820)
+                {
+                    Panel card = new Panel { Size = new Size(155, 100), Location = new Point(sx, y), BackColor = Color.FromArgb(20, 20, 45) };
+                    card.Region = Region.FromHrgn(MakeRounded(0, 0, card.Width, card.Height, 15, 15));
+
+                    card.Paint += (s, e) => {
+                        ControlPaint.DrawBorder(e.Graphics, card.ClientRectangle, Color.FromArgb(50, Color.Cyan), ButtonBorderStyle.Solid);
+                    };
+
+                    Label n = new Label { Text = r[0].ToString().ToUpper(), ForeColor = Color.Orange, Location = new Point(12, 15), Font = new Font("Segoe UI Black", 9, FontStyle.Bold), AutoSize = true };
+                    Label j = new Label { Text = r[1].ToString(), ForeColor = Color.Cyan, Location = new Point(10, 42), Font = new Font("Segoe UI Black", 18), AutoSize = true };
+                    Label u = new Label { Text = "COMPLETED JOBS", ForeColor = Color.Gray, Location = new Point(12, 75), Font = new Font("Segoe UI Semibold", 7), AutoSize = true };
+
+                    card.Controls.AddRange(new Control[] { n, j, u });
+                    pnlMain.Controls.Add(card);
+                    sx += 165;
+                }
+            }
+        }
+
+
+
         // ১. কাস্টমার রিভিউ পেজ ওপেন করার মেথড
-        private void OpenCustomerReviews(object sender, EventArgs e)
+        private async void OpenCustomerReviews(object sender, EventArgs e)
         {
             ResetButtonColors(sender);
 
-            // প্যানেল ক্লিয়ার করে নতুন ফর্ম লোড করা
             pnlMain.Controls.Clear();
-            pnlMain.BackColor = Color.FromArgb(10, 10, 25); // তোর পছন্দের Midnight Blue
+            pnlMain.BackColor = Color.FromArgb(10, 10, 25);
 
             SetupDarkPremiumUI();
-            LoadReviewDashboardData();
+
+            // Eikhane await use kora hoyeche jate UI load hoye jay, 
+            // ar data background e load hote thake.
+            await LoadReviewDashboardDataAsync();
         }
 
         private void SetupDarkPremiumUI()
@@ -776,36 +969,69 @@ namespace PetShopApp
             pnlSpotlight.Controls.AddRange(new Control[] { lblBadge, picSpot, lblName, lblDesc, pnlGlow });
         }
 
-        private void LoadReviewDashboardData()
+        private async Task LoadReviewDashboardDataAsync()
         {
             flowReviewList.Controls.Clear();
-            try
+
+            // Database er kaj background thread-e hobe
+            var reviews = await Task.Run(() =>
             {
-                using (SqlConnection conn = new SqlConnection(connString))
+                var reviewData = new System.Collections.Generic.List<dynamic>();
+                try
                 {
-                    conn.Open();
-                    string topSql = "SELECT TOP 1 ItemName FROM ProductReviews GROUP BY ItemName ORDER BY AVG(CAST(Rating AS FLOAT)) DESC";
-                    var topPet = new SqlCommand(topSql, conn).ExecuteScalar()?.ToString() ?? "N/A";
-
-                    pnlMain.Controls.Find("lblTopPet", true)[0].Text = topPet.ToUpper();
-                    PictureBox pb = (PictureBox)pnlMain.Controls.Find("picSpot", true)[0];
-                    try { pb.Image = (Image)Properties.Resources.ResourceManager.GetObject(topPet.Replace(" ", "_")); } catch { }
-
-                    string sql = "SELECT Username, ItemName, Comment, Rating, ReviewDate FROM ProductReviews ORDER BY ReviewDate DESC";
-                    SqlDataReader r = new SqlCommand(sql, conn).ExecuteReader();
-                    while (r.Read())
+                    using (SqlConnection conn = new SqlConnection(connString))
                     {
-                        flowReviewList.Controls.Add(CreateDarkCard(
-                            r["Username"].ToString(),
-                            r["ItemName"].ToString(),
-                            r["Comment"].ToString(),
-                            Convert.ToInt32(r["Rating"]),
-                            Convert.ToDateTime(r["ReviewDate"]).ToString("dd MMM")
-                        ));
+                        conn.Open();
+                        string sql = "SELECT Username, ItemName, Comment, Rating, ReviewDate FROM ProductReviews ORDER BY ReviewDate DESC";
+                        SqlDataReader r = new SqlCommand(sql, conn).ExecuteReader();
+                        while (r.Read())
+                        {
+                            reviewData.Add(new
+                            {
+                                User = r["Username"].ToString(),
+                                Pet = r["ItemName"].ToString(),
+                                Msg = r["Comment"].ToString(),
+                                Rating = Convert.ToInt32(r["Rating"]),
+                                Date = Convert.ToDateTime(r["ReviewDate"]).ToString("dd MMM")
+                            });
+                        }
                     }
                 }
+                catch { }
+                return reviewData;
+            });
+
+            // UI-te card gulo add kora (Main Thread-e)
+            foreach (var rev in reviews)
+            {
+                flowReviewList.Controls.Add(CreateDarkCard(rev.User, rev.Pet, rev.Msg, rev.Rating, rev.Date));
             }
-            catch { /* Add manual test samples here if DB is not ready */ }
+
+            // Top Pet Spotlight Update (Background Query)
+            await UpdateSpotlightAsync();
+        }
+
+        private async Task UpdateSpotlightAsync()
+        {
+            string topPet = await Task.Run(() => {
+                try
+                {
+                    using (SqlConnection conn = new SqlConnection(connString))
+                    {
+                        conn.Open();
+                        string sql = "SELECT TOP 1 ItemName FROM ProductReviews GROUP BY ItemName ORDER BY AVG(CAST(Rating AS FLOAT)) DESC";
+                        return new SqlCommand(sql, conn).ExecuteScalar()?.ToString() ?? "N/A";
+                    }
+                }
+                catch { return "N/A"; }
+            });
+
+            if (pnlMain.Controls.Find("lblTopPet", true).Length > 0)
+            {
+                pnlMain.Controls.Find("lblTopPet", true)[0].Text = topPet.ToUpper();
+                PictureBox pb = (PictureBox)pnlMain.Controls.Find("picSpot", true)[0];
+                try { pb.Image = (Image)Properties.Resources.ResourceManager.GetObject(topPet.Replace(" ", "_")); } catch { }
+            }
         }
 
         private Panel CreateDarkCard(string user, string pet, string msg, int rating, string date)

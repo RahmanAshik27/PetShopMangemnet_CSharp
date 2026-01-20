@@ -73,6 +73,16 @@ namespace PetShopApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Ashik {
+            get {
+                object obj = ResourceManager.GetObject("Ashik", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Bengal {
             get {
                 object obj = ResourceManager.GetObject("Bengal", resourceCulture);

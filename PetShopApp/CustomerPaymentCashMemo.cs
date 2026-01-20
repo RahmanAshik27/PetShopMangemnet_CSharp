@@ -287,13 +287,21 @@ namespace PetShopApp
 
         private void Action_DeliveryChanged(string method)
         {
-            selectedDeliveryMethod = method; // Eita check korbe order confirm-er shomoy
+            selectedDeliveryMethod = method; // Database-e AgentName hishebe jabe
 
-            // Tor ager logic...
-            if (method.Contains("Pathao")) currentDeliveryManId = 2;
-            else if (method.Contains("FoodPanda")) currentDeliveryManId = 3;
-            else if (method.Contains("RedX")) currentDeliveryManId = 4;
-            else currentDeliveryManId = 5;
+            // Table-er ID (AgentID) onujayi logic:
+            if (method.Contains("Pathao"))
+                currentDeliveryManId = 1;
+            else if (method.Contains("FoodPanda"))
+                currentDeliveryManId = 2;
+            else if (method.Contains("RedX"))
+                currentDeliveryManId = 3;
+            else if (method.Contains("Jhinku"))
+                currentDeliveryManId = 4;
+            else if (method.Contains("Shop Pickup"))
+                currentDeliveryManId = 5;
+            else
+                currentDeliveryManId = 0; // Kono mil na pele
         }
 
         private void Action_PaymentSelected(string type, Button clickedButton)
@@ -331,6 +339,11 @@ namespace PetShopApp
                     MessageBox.Show($"{type} selected mama! Ekhon 'Confirm Order' e click koro.", "Payment Ready");
                 }
             }
+        }
+
+        private void CustomerPaymentCashMemo_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void Action_BackToShop() => MessageBox.Show("Returning to Customer Dashboard...", "Buy More Items");
@@ -381,6 +394,20 @@ namespace PetShopApp
                     cmdOrder.Parameters.AddWithValue("@dmanId", currentDeliveryManId);
                     int generatedId = (int)cmdOrder.ExecuteScalar();
 
+                    // --- STEP 5: MAMA ADDED: Update DeliveryPartners Table ---
+                    // Eikhane Agent-er delivery count +1 hobe ar business amount add hobe
+                    string sqlUpdateAgent = @"UPDATE DeliveryPartners 
+                               SET DeliveryCount = DeliveryCount + 1, 
+                                   BusinessEarned = BusinessEarned + @total 
+                               WHERE AgentID = @dmanId";
+
+                    SqlCommand cmdAgent = new SqlCommand(sqlUpdateAgent, conn, transaction);
+                    cmdAgent.Parameters.AddWithValue("@total", OrderTotalBill);
+                    cmdAgent.Parameters.AddWithValue("@dmanId", currentDeliveryManId);
+                    cmdAgent.ExecuteNonQuery();
+
+
+
                     // --- STEP 2: Grouping items to handle multiple quantities of same item ---
                     var groupedItems = PurchasedItems
                         .GroupBy(i => i.Name)
@@ -408,6 +435,7 @@ namespace PetShopApp
                         cmdS.Parameters.AddWithValue("@qty", item.Qty);
                         cmdS.Parameters.AddWithValue("@pname", item.Name);
                         cmdS.ExecuteNonQuery();
+
                     }
 
                     // --- STEP 3: Finalize Transaction ---
