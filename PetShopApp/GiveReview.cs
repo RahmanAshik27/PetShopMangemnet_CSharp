@@ -27,19 +27,15 @@ namespace PetShopApp
 
         private string connString = $@"Data Source={Environment.MachineName}\SQLEXPRESS; Initial Catalog=PetShopManagementDB; Integrated Security=True";
 
-        private string currentUser; // Global variable for this form
-        
-
-        // Constructor-e username parameter add kora hoyeche
+        private string currentUser; 
         public GiveReview(string username)
         {
             InitializeComponent();
-            this.currentUser = username; // Login theke asha username save holo
+            this.currentUser = username; 
 
-            // Ekhon tor dashboard er baki kaj koro
             SetupDashboard();
             BuildSidebar();
-            BuildHeader(); // Header e ekhon currentUser er name show korbe
+            BuildHeader(); 
             BuildFeedArea();
             StartClock();
             RenderItems("Overview");
@@ -58,7 +54,7 @@ namespace PetShopApp
             pnlHeader = new Panel { Dock = DockStyle.Top, Height = 160, BackColor = Color.FromArgb(18, 26, 37) };
             this.Controls.Add(pnlHeader);
 
-            // 🐾 1. LOGO SECTION
+         
             PictureBox picLogo = new PictureBox
             {
                 Size = new Size(85, 85),
@@ -69,18 +65,17 @@ namespace PetShopApp
             try { picLogo.Image = (Image)Properties.Resources.ResourceManager.GetObject("pet_logo"); }
             catch { picLogo.BackColor = Color.FromArgb(46, 204, 113); }
 
-            // 2. MAIN TITLE
-            // Status Panel e currentUser use kora:
+          
             Label lblUserStatus = new Label
             {
-                Text = currentUser, // Eikhane login kora user-er nam auto bosbe
+                Text = currentUser, 
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 ForeColor = Color.White,
                 Location = new Point(45, 10),
                 AutoSize = true
             };
 
-            // 📜 3. JOSS PET QUOTE
+           
             Label lblQuote = new Label
             {
                 Text = "\"Until one has loved an animal, a part of one's soul remains unawakened.\"",
@@ -90,7 +85,7 @@ namespace PetShopApp
                 AutoSize = true
             };
 
-            // 🔍 4. SEARCH LABEL
+           
             Label lblSearchHint = new Label
             {
                 Text = "FIND YOUR PET :",
@@ -100,7 +95,7 @@ namespace PetShopApp
                 AutoSize = true
             };
 
-            // 🐾 2. MAIN TITLE (Add this block)
+            
             Label lblWelcome = new Label
             {
                 Text = "PET UNIVERSE EXPLORER",
@@ -110,7 +105,7 @@ namespace PetShopApp
                 AutoSize = true
             };
 
-            // 📦 5. SEARCH BAR (Clean & Bold)
+           
             Panel pnlSearchBorder = new Panel
             {
                 Size = new Size(420, 42),
@@ -128,7 +123,7 @@ namespace PetShopApp
             {
                 Text = "",
                 Width = 360,
-                Location = new Point(40, 10), // Icon er pashe x=40 thake start hobe
+                Location = new Point(40, 10),
                 BorderStyle = BorderStyle.None,
                 BackColor = Color.FromArgb(35, 48, 64),
                 ForeColor = Color.White,
@@ -137,7 +132,7 @@ namespace PetShopApp
             txtSearch.TextChanged += (s, e) => RenderItems(currentCategory, txtSearch.Text);
             pnlSearchInner.Controls.AddRange(new Control[] { lblSearchIcon, txtSearch });
 
-            // 🕒 6. MULTI-LINE CLOCK (Time + Date + Day)
+       
             lblClock = new Label
             {
                 Text = "🕒 Loading...",
@@ -148,7 +143,6 @@ namespace PetShopApp
                 TextAlign = ContentAlignment.MiddleRight
             };
 
-            // ✨ 7. STATUS PANEL (Clock-er thik niche design kora)
             Panel pnlStatus = new Panel
             {
                 Size = new Size(220, 50),
@@ -156,7 +150,7 @@ namespace PetShopApp
                 BackColor = Color.FromArgb(35, 48, 64),
             };
 
-            // Design Accent Line
+      
             Panel pnlAccent = new Panel { Dock = DockStyle.Bottom, Height = 3, BackColor = Color.FromArgb(46, 204, 113) };
             pnlStatus.Controls.Add(pnlAccent);
 
@@ -166,9 +160,8 @@ namespace PetShopApp
 
             pnlStatus.Controls.AddRange(new Control[] { lblUserIcon, lblUserStatus, lblOnline });
 
-            // Header-e shob add kora
             pnlHeader.Controls.AddRange(new Control[] { picLogo, lblWelcome, lblQuote, lblSearchHint, pnlSearchBorder, lblClock, pnlStatus });
-            // Method-er ekdom sheshe eita thakbe
+           
             pnlHeader.Controls.AddRange(new Control[] { picLogo, lblWelcome, lblQuote, lblSearchHint, pnlSearchBorder, lblClock, pnlStatus });
         }
         private void BuildSidebar()
@@ -229,10 +222,9 @@ namespace PetShopApp
 
         private Panel CreateProductCard(PetItem item)
         {
-            // Card size ektu boro kora hoyeche safety-r jonno
             Panel card = new Panel { Size = new Size(920, 240), BackColor = Color.White, Margin = new Padding(0, 0, 0, 25) };
 
-            // Picture Box
+           
             PictureBox pic = new PictureBox { Size = new Size(180, 180), Location = new Point(20, 20), BackColor = Color.FromArgb(245, 245, 245), SizeMode = PictureBoxSizeMode.StretchImage };
             try
             {
@@ -241,14 +233,14 @@ namespace PetShopApp
             }
             catch { }
 
-            // Name: Location ektu bariye 220 er bodle 230 kora hoyeche jate image er niche na pore
+           
             Label name = new Label
             {
                 Text = item.Name.ToUpper(),
-                Font = new Font("Segoe UI", 18, FontStyle.Bold), // Font size ektu boro kora
+                Font = new Font("Segoe UI", 18, FontStyle.Bold), 
                 Location = new Point(230, 25),
-                AutoSize = true, // AutoSize true thakle katar kotha na
-                MaximumSize = new Size(300, 0) // Beshi boro hole nichey nambe, katbe na
+                AutoSize = true, 
+                MaximumSize = new Size(300, 0) 
             };
 
             Label price = new Label
@@ -260,7 +252,6 @@ namespace PetShopApp
                 AutoSize = true
             };
 
-            // ⭐ Stars (Rating) - Location ektu nichey namano
             int localSelectedRating = 5;
             Label[] stars = new Label[5];
             for (int i = 0; i < 5; i++)
@@ -275,13 +266,12 @@ namespace PetShopApp
                 card.Controls.Add(stars[i]);
             }
 
-            // Reviews & Other controls... (Ager motoi thakbe)
-            // 📜 Previous Reviews Label (Bold, Orange & Boro kora hoyeche)
+         
             Label lblHistory = new Label
             {
                 Text = "📜 PREVIOUS REVIEWS:",
-                Font = new Font("Segoe UI Black", 11, FontStyle.Bold), // Size 11 & Black style for extra bold
-                ForeColor = Color.DarkOrange, // Stylish Orange color
+                Font = new Font("Segoe UI Black", 11, FontStyle.Bold), 
+                ForeColor = Color.DarkOrange,
                 Location = new Point(580, 18),
                 AutoSize = true
             };
@@ -344,6 +334,11 @@ namespace PetShopApp
                 }
             }
             catch { lb.Items.Add("No reviews yet."); }
+        }
+
+        private void GiveReview_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void StartClock()

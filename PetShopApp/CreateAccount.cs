@@ -7,7 +7,7 @@ namespace PetShopApp
 {
     public partial class CreateAccount : Form
     {
-        // --- 1. Control Declarations ---
+      
         private TextBox txtFullName, txtUsername, txtEmail, txtPhone, txtPass, txtAddress;
         private Button btnRegister, btnTogglePass, btnBackToLogin;
         private bool isPassHidden = true;
@@ -18,7 +18,7 @@ namespace PetShopApp
 
         }
 
-        // Connection String (Ensure DB name matches yours)
+      
         string connString = $@"Data Source={Environment.MachineName}\SQLEXPRESS; Initial Catalog=PetShopManagementDB; Integrated Security=True";
 
         public CreateAccount()
@@ -42,7 +42,7 @@ namespace PetShopApp
         {
             this.Controls.Clear();
 
-            // --- 2. Header Section ---
+      
             pnlHeader = new Panel { Dock = DockStyle.Top, Height = 120, BackColor = Color.FromArgb(23, 31, 42) };
             Label lblLogo = new Label
             {
@@ -65,7 +65,7 @@ namespace PetShopApp
             pnlHeader.Controls.Add(lblLogo); pnlHeader.Controls.Add(lblTitle);
             this.Controls.Add(pnlHeader);
 
-            // --- 3. Input Section ---
+      
             int startX = 50;
             int startY = 135;
             int gap = 62;
@@ -101,25 +101,25 @@ namespace PetShopApp
             };
             this.Controls.Add(btnTogglePass);
 
-            // --- Home Address Section with Placeholder ---
+      
             CreateLabel("HOME ADDRESS", startX, startY + (gap * 5));
             txtAddress = CreateTextBox(startX, startY + (gap * 5) + 20);
 
-            // Default Placeholder Text set kora
+      
             string placeholder = "Please enter exact delivery address";
             txtAddress.Text = placeholder;
-            txtAddress.ForeColor = Color.Gray; // Hint text jate halka color thake
+            txtAddress.ForeColor = Color.Gray; 
 
-            // --- Placeholder logic (Jokhon box-e click korbe) ---
+      
             txtAddress.Enter += (s, e) => {
                 if (txtAddress.Text == placeholder)
                 {
                     txtAddress.Text = "";
-                    txtAddress.ForeColor = Color.Black; // Typing shuru hole kalo hoye jabe
+                    txtAddress.ForeColor = Color.Black; 
                 }
             };
 
-            // --- Placeholder logic (Jokhon box khali rekhe onno kothao click korbe) ---
+            
             txtAddress.Leave += (s, e) => {
                 if (string.IsNullOrWhiteSpace(txtAddress.Text))
                 {
@@ -128,7 +128,7 @@ namespace PetShopApp
                 }
             };
 
-            // --- 4. Register Button ---
+            
             btnRegister = new Button
             {
                 Text = "CREATE ACCOUNT",
@@ -141,10 +141,10 @@ namespace PetShopApp
                 Cursor = Cursors.Hand
             };
             btnRegister.FlatAppearance.BorderSize = 0;
-            btnRegister.Click += HandleRegistration; // Eikhane logic call hobe
+            btnRegister.Click += HandleRegistration; 
             this.Controls.Add(btnRegister);
 
-            // --- 5. Back to Login ---
+            
             btnBackToLogin = new Button
             {
                 Text = "Already have an account? Login here",
@@ -159,7 +159,7 @@ namespace PetShopApp
             btnBackToLogin.Click += (s, e) => this.Close();
             this.Controls.Add(btnBackToLogin);
 
-            // --- 6. Cute Footer Section (Floating Look) ---
+            
             pnlFooter = new Panel { Dock = DockStyle.Bottom, Height = 60, BackColor = Color.FromArgb(23, 31, 42) };
             Label lblFooter = new Label
             {
@@ -190,7 +190,7 @@ namespace PetShopApp
 
         private void HandleRegistration(object sender, EventArgs e)
         {
-            // ১. Shob field khali kina check (Agei chilo)
+            
             if (string.IsNullOrWhiteSpace(txtFullName.Text) || string.IsNullOrWhiteSpace(txtUsername.Text) ||
                 string.IsNullOrWhiteSpace(txtEmail.Text) || string.IsNullOrWhiteSpace(txtPhone.Text) ||
                 string.IsNullOrWhiteSpace(txtPass.Text))
@@ -199,14 +199,14 @@ namespace PetShopApp
                 return;
             }
 
-            // ২. Password Length Check (Minimum 6 Characters)
+            
             if (txtPass.Text.Length < 6)
             {
                 MessageBox.Show("Mama, password kom-pakkhe 6 digit-er hote hobe!", "Security Error");
                 return;
             }
 
-            // ৩. Phone Number double check
+            
             string phone = txtPhone.Text.Trim();
             if (phone.Length != 11 || !phone.StartsWith("01"))
             {
@@ -214,7 +214,7 @@ namespace PetShopApp
                 return;
             }
 
-            // ৪. Email Format Check (Basic)
+            
             string email = txtEmail.Text.Trim().ToLower();
             if (!email.Contains("@") || !email.Contains("."))
             {
@@ -222,13 +222,13 @@ namespace PetShopApp
                 return;
             }
 
-            // --- Database Operation (Trim use kora hoyeche) ---
+            
             using (SqlConnection con = new SqlConnection(connString))
             {
                 try
                 {
                     con.Open();
-                    // Duplicate Username Check
+            
                     SqlCommand checkCmd = new SqlCommand("SELECT COUNT(*) FROM Users WHERE Username=@u", con);
                     checkCmd.Parameters.AddWithValue("@u", txtUsername.Text.Trim());
                     if ((int)checkCmd.ExecuteScalar() > 0)
@@ -237,13 +237,13 @@ namespace PetShopApp
                         return;
                     }
 
-                    // Data Insert
+            
                     string q = "INSERT INTO Users (Username, Password, FullName, Email, Phone, Address, UserRole) VALUES (@u, @p, @n, @e, @ph, @a, 'Customer')";
                     SqlCommand cmd = new SqlCommand(q, con);
 
-                    // Trim() use korsi jate baaje space na thake
+            
                     cmd.Parameters.AddWithValue("@u", txtUsername.Text.Trim());
-                    cmd.Parameters.AddWithValue("@p", txtPass.Text); // Password trim hoy na shadharonoto
+                    cmd.Parameters.AddWithValue("@p", txtPass.Text); 
                     cmd.Parameters.AddWithValue("@n", txtFullName.Text.Trim());
                     cmd.Parameters.AddWithValue("@e", email);
                     cmd.Parameters.AddWithValue("@ph", phone);

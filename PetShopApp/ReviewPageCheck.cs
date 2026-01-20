@@ -11,23 +11,22 @@ using System.Windows.Forms;
 
 namespace PetShopApp
 {
-    // 1. MAIN FORM CLASS
+
     public partial class ReviewPageCheck : Form
     {
         public ReviewPageCheck()
         {
-            // --- Form Settings ---
+          
             this.Text = "PetCare Review Hub";
             this.Size = new Size(460, 570);
             this.BackColor = Color.White;
 
-            // NONE er jaygay FixedSingle korlam jate normal cross button ashe
+         
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
-            // Jate form ta screen er majhkhane thake
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            // Jate maximize button e click kore design baje na hoye jay
+            
             this.MaximizeBox = false;
 
             CreatePetShopUI();
@@ -37,7 +36,7 @@ namespace PetShopApp
         {
             this.Controls.Clear();
 
-            // --- 1. HEADER SECTION ---
+      
             Panel pnlHeader = new Panel { Dock = DockStyle.Top, Height = 150, BackColor = Color.FromArgb(23, 31, 42) };
 
 
@@ -65,7 +64,6 @@ namespace PetShopApp
             pnlHeader.Controls.Add(lblTitle);
             this.Controls.Add(pnlHeader);
 
-            // --- 2. SELECTION BUTTONS ---
             Button btnWrite = CreatePetButton("WRITE A REVIEW", "Share your valuable feedback with us!", 190, Color.FromArgb(230, 126, 34), "📝");
             btnWrite.Click += HandleWriteReview;
 
@@ -75,7 +73,7 @@ namespace PetShopApp
             this.Controls.Add(btnWrite);
             this.Controls.Add(btnView);
 
-            // --- 3. PAW PATTERN DESIGN ---
+       
             Panel pnlPawPattern = new Panel { Dock = DockStyle.Bottom, Height = 50, BackColor = Color.Transparent };
 
             for (int i = 0; i < 7; i++)
@@ -93,7 +91,7 @@ namespace PetShopApp
             }
             this.Controls.Add(pnlPawPattern);
 
-            // --- 4. FOOTER ---
+        
             Panel pnlFooter = new Panel { Dock = DockStyle.Bottom, Height = 60, BackColor = Color.FromArgb(23, 31, 42) };
             Label lblFooter = new Label
             {
@@ -120,7 +118,7 @@ namespace PetShopApp
          
             ShowReview reviewForm = new ShowReview();
 
-            // Form-ta show kora holo
+      
             reviewForm.Show();
         }
 
@@ -141,7 +139,7 @@ namespace PetShopApp
                 Graphics g = e.Graphics;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
 
-                // FIX: Ekhon extension method ta thik moto call hobe
+              
                 g.FillRoundedRectangle(new SolidBrush(themeColor), 0, 0, 10, btn.Height, 4);
 
                 g.DrawString(icon, new Font("Segoe UI", 20), new SolidBrush(themeColor), 25, 30);

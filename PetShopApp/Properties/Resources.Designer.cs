@@ -73,6 +73,26 @@ namespace PetShopApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap apon {
+            get {
+                object obj = ResourceManager.GetObject("apon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arafat {
+            get {
+                object obj = ResourceManager.GetObject("arafat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Ashik {
             get {
                 object obj = ResourceManager.GetObject("Ashik", resourceCulture);
@@ -213,6 +233,16 @@ namespace PetShopApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hemel {
+            get {
+                object obj = ResourceManager.GetObject("hemel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Holland_Lop {
             get {
                 object obj = ResourceManager.GetObject("Holland_Lop", resourceCulture);
@@ -296,6 +326,16 @@ namespace PetShopApp.Properties {
         internal static System.Drawing.Bitmap Mini_Rex {
             get {
                 object obj = ResourceManager.GetObject("Mini_Rex", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mostafiz {
+            get {
+                object obj = ResourceManager.GetObject("Mostafiz", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -443,9 +483,29 @@ namespace PetShopApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap shajia {
+            get {
+                object obj = ResourceManager.GetObject("shajia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Siamese {
             get {
                 object obj = ResourceManager.GetObject("Siamese", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sohid {
+            get {
+                object obj = ResourceManager.GetObject("sohid", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

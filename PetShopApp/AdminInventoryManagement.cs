@@ -9,7 +9,7 @@ namespace PetShopApp
 {
     public partial class AdminInventoryManagement : Form
     {
-        // Tor dynamic connection string
+        
         private string connString = $@"Data Source={Environment.MachineName}\SQLEXPRESS; Initial Catalog=PetShopManagementDB; Integrated Security=True";
 
         private Panel pnlSidebar, pnlMain, pnlHeader, pnlFooter, pnlPreviewCard, pnlLiveStatus;
@@ -37,14 +37,14 @@ namespace PetShopApp
         public AdminInventoryManagement()
         {
             InitializeComponent();
-            SetupFinalDashboard(); // Mama, main UI ta ekhane build hobe
+            SetupFinalDashboard(); 
             StartClock();
             this.DoubleBuffered = true;
         }
 
         private void AdminInventoryManagement_Load(object sender, EventArgs e)
         {
-            // Eita khali thakleo somossya nai, shob SetupFinalDashboard e kora ache
+            
         }
 
         private void SetupFinalDashboard()
@@ -53,7 +53,7 @@ namespace PetShopApp
             this.Size = new Size(1150, 750);
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            // --- 1. SIDEBAR SETUP ---
+            
             pnlSidebar = new Panel { Dock = DockStyle.Left, Width = 315, BackColor = Color.FromArgb(45, 55, 72), Padding = new Padding(20) };
             this.Controls.Add(pnlSidebar);
 
@@ -99,14 +99,14 @@ namespace PetShopApp
             pnlPreviewCard.Controls.AddRange(new Control[] { lblEmoji, lblPreviewTitle });
             pnlSidebar.Controls.Add(pnlPreviewCard);
 
-            // --- 2. HEADER SETUP ---
+            
             pnlHeader = new Panel { Location = new Point(315, 0), Size = new Size(this.Width - 320, 60), BackColor = Color.FromArgb(23, 31, 42), Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right };
             this.Controls.Add(pnlHeader);
             Label lblAppName = new Label { Text = "🐾 PETSHOP PREMIUM SYSTEM", ForeColor = Color.White, Font = new Font("Segoe UI", 15, FontStyle.Bold), Location = new Point(20, 18), AutoSize = true };
             lblClock = new Label { ForeColor = Color.FromArgb(230, 126, 34), Font = new Font("Segoe UI Semibold", 11), AutoSize = true };
             pnlHeader.Controls.AddRange(new Control[] { lblAppName, lblClock });
 
-            // --- 3. MAIN CONTENT AREA ---
+            
             pnlMain = new Panel { Location = new Point(320, 60), Size = new Size(this.Width - 320, this.Height - 170), BackColor = Color.FromArgb(240, 242, 245), Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right };
             this.Controls.Add(pnlMain);
 
@@ -136,18 +136,18 @@ namespace PetShopApp
             pnlMonitorContainer.Controls.AddRange(new Control[] { btnRemoveSelected, btnBackDashboard, dgvInventory });
             pnlMain.Controls.AddRange(new Control[] { pnlMonitorContainer, new Label { Text = "📊 LIVE TABLE MONITOR", Dock = DockStyle.Top, Height = 30, Font = new Font("Segoe UI Bold", 9), Padding = new Padding(20, 5, 0, 0) }, pnlLiveStatus, flowCardGallery, new Label { Text = "🖼️ SELECT FROM CATALOG", Dock = DockStyle.Top, Height = 30, Font = new Font("Segoe UI Bold", 9), Padding = new Padding(20, 5, 0, 0) } });
 
-            // --- 4. PREMIUM FOOTER SETUP (Sidebar-er por theke shuru) ---
+            
             pnlFooter = new Panel
             {
-                Location = new Point(315, this.Height - 100), // Sidebar width (320) er por theke shuru
-                Size = new Size(this.Width - 320, 100),       // Baki jayga tuku nibe
+                Location = new Point(315, this.Height - 100), 
+                Size = new Size(this.Width - 320, 100),       
                 BackColor = Color.FromArgb(15, 23, 30),
-                Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right, // Window boro korle footer-o boro hobe
+                Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right, 
                 Padding = new Padding(30, 0, 30, 0)
             };
             this.Controls.Add(pnlFooter);
 
-            // Footer-er boro ar joss lekha
+            
             Label lblFooterText = new Label
             {
                 Text = "🛡️ SECURE PETSHOP MANAGEMENT SYSTEM v2.0 | Powered by PetShop Premium",
@@ -171,7 +171,7 @@ namespace PetShopApp
             pnlFooter.Controls.AddRange(new Control[] { lblFooterText, lblCopyright });
         }
 
-        // --- CORE DATABASE METHODS ---
+        
         private async void LoadInventoryFromDB(string category)
         {
             dgvInventory.Rows.Clear();
@@ -212,7 +212,7 @@ namespace PetShopApp
             catch (Exception ex) { MessageBox.Show("Save Error: " + ex.Message); }
         }
 
-        // --- UI SYNC LOGIC ---
+        
         private void UpdateUI()
         {
             if (cmbCategory.SelectedIndex <= 0) return;
@@ -291,7 +291,7 @@ namespace PetShopApp
             }
         }
 
-        // --- HELPER METHODS ---
+        
         private void StartClock() { timer = new Timer { Interval = 1000 }; timer.Tick += (s, e) => { lblClock.Text = DateTime.Now.ToString("dddd, dd MMM yyyy | hh:mm:ss tt"); lblClock.Left = pnlHeader.Width - lblClock.Width - 20; lblClock.Top = 20; }; timer.Start(); }
         private void SyncGallerySelection() { foreach (Control c in flowCardGallery.Controls) if (c is Panel p) p.BackColor = (p.Name == cmbSubItem.Text) ? Color.FromArgb(230, 126, 34) : Color.White; }
         private void ResetPriceField() { txtPrice.Text = "Enter Price..."; txtPrice.ForeColor = Color.Gray; }
@@ -369,13 +369,13 @@ namespace PetShopApp
 
         private void ActionBackToDashboard()
         {
-            // 1. Dashboard-er notun ekta instance/window banalam
+           
             AdminDashboard dashboard = new AdminDashboard();
 
-            // 2. Dashboard window-ta open korlam
+           
             dashboard.Show();
 
-            // 3. Current Inventory window-ta ekbare close kore dilam memory clear rakhar jonno
+           
             this.Close();
         }
     }

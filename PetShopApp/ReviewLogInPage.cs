@@ -14,7 +14,7 @@ namespace PetShopApp
     public partial class ReviewLogInPage : Form
     {
 
-        // --- 1. Control Declarations ---
+        
         private TextBox txtUser;
         private TextBox txtPass;
         private Button btnLogin;
@@ -26,7 +26,7 @@ namespace PetShopApp
         private Panel pnlHeader;
         private Panel pnlFooter;
 
-        // Connection String (Strictly for SQLEXPRESS)
+      
         string connString = $@"Data Source={Environment.MachineName}\SQLEXPRESS; Initial Catalog=PetShopManagementDB; Integrated Security=True";
 
         public ReviewLogInPage()
@@ -49,10 +49,9 @@ namespace PetShopApp
 
         private void BuildMyUI()
         {
-            // Clear all existing controls to avoid overlapping
+           
             this.Controls.Clear();
 
-            // --- 2. Header Section ---
             pnlHeader = new Panel();
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Height = 120;
@@ -80,7 +79,7 @@ namespace PetShopApp
 
 
 
-            // --- 3. Login Card (FULL WIDTH & SCREEN REPLACE) ---
+           
             card = new Panel();
             card.Size = new Size(420, 460);
             card.Location = new Point(0, 120);
@@ -89,7 +88,6 @@ namespace PetShopApp
             this.Controls.Add(card);
 
 
-            // Username
             lblUserTitle = new Label();
             lblUserTitle.Text = "USERNAME";
             lblUserTitle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
@@ -103,7 +101,7 @@ namespace PetShopApp
             txtUser.Font = new Font("Segoe UI", 12);
             txtUser.BorderStyle = BorderStyle.FixedSingle;
 
-            // Password
+           
             lblPassTitle = new Label();
             lblPassTitle.Text = "PASSWORD";
             lblPassTitle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
@@ -118,7 +116,7 @@ namespace PetShopApp
             txtPass.PasswordChar = '●';
             txtPass.BorderStyle = BorderStyle.FixedSingle;
 
-            // Toggle Eye Button
+          
             btnTogglePass = new Button();
             btnTogglePass.Text = "👁";
             btnTogglePass.Size = new Size(40, 29);
@@ -129,7 +127,7 @@ namespace PetShopApp
             btnTogglePass.FlatAppearance.BorderSize = 0;
             btnTogglePass.Click += new EventHandler(BtnTogglePass_Click);
 
-            // Login Button
+            
             btnLogin = new Button();
             btnLogin.Text = "LOGIN";
             btnLogin.Size = new Size(280, 50);
@@ -142,7 +140,7 @@ namespace PetShopApp
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.Click += new EventHandler(CustomerLogin_Click);
 
-            // Forgot Password (New Design)
+            
             btnForgotPass = new Button();
             btnForgotPass.Text = "Forgot Password?";
             btnForgotPass.Size = new Size(280, 25);
@@ -156,7 +154,6 @@ namespace PetShopApp
             btnForgotPass.FlatAppearance.MouseOverBackColor = Color.White;
             btnForgotPass.Click += new EventHandler(BtnForgotPass_Click);
 
-            // Registration Link
             Label lblReg = new Label();
             lblReg.Text = "Don't have an account? Create one";
             lblReg.Size = new Size(280, 24);
@@ -168,14 +165,12 @@ namespace PetShopApp
             lblReg.Click += new EventHandler(lblReg_Click);
 
 
-            // Add all controls to card
             card.Controls.Add(lblUserTitle); card.Controls.Add(txtUser);
             card.Controls.Add(lblPassTitle); card.Controls.Add(txtPass);
             card.Controls.Add(btnTogglePass); card.Controls.Add(btnLogin);
             card.Controls.Add(btnForgotPass); card.Controls.Add(lblReg);
             this.AcceptButton = btnLogin;
 
-            // --- 4. Premium Footer ---
             pnlFooter = new Panel();
             pnlFooter.Dock = DockStyle.Bottom;
             pnlFooter.Height = 70;
@@ -202,7 +197,6 @@ namespace PetShopApp
             txtUser.Focus();
         }
 
-        // --- 5. Action Handlers ---
 
         private void BtnTogglePass_Click(object sender, EventArgs e)
         {
@@ -213,24 +207,25 @@ namespace PetShopApp
 
         private void BtnForgotPass_Click(object sender, EventArgs e)
         {
-            // Notun recovery page er object banailam
+          
             RecoverPassword recoveryPage = new RecoverPassword();
 
-            // Eita diye page ta pop-up hisebe open hobe
             recoveryPage.ShowDialog();
         }
         private void lblReg_Click(object sender, EventArgs e)
         {
-            // CreateAccount form-er ekta object banalam
             CreateAccount regForm = new CreateAccount();
 
-            // Form-ta show korlam
+            
             regForm.Show();
 
-            // (Optional) Login form-ta jodi hide korte chao:
-            // this.Hide(); 
+            
         }
 
+        private void ReviewLogInPage_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void CustomerLogin_Click(object sender, EventArgs e)
         {
@@ -257,7 +252,6 @@ namespace PetShopApp
 
                         MessageBox.Show($"Welcome {loggedUser}! \nPress Enter to proceed to Pet Universe.", "Login Success");
 
-                        // 🔥 GiveReview form open koro ar username pathao
                         GiveReview dashboard = new GiveReview(loggedUser);
                         dashboard.Show();
 

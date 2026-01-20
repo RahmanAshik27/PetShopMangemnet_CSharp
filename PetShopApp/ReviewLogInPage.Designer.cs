@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "ReviewLogInPage";
             this.Text = "ReviewLogInPage";
-          
+            this.Load += new System.EventHandler(this.ReviewLogInPage_Load);
             this.ResumeLayout(false);
 
         }

@@ -16,10 +16,10 @@ namespace PetShopApp
         private Label lblClock, lblJossSlogan, lblTotalAmount;
         private Timer timerClock;
         private double totalBill = 0;
-        // Dashboard class-er upore eita declare koro
+        
         private List<(string Name, double Price)> cartItemsList = new List<(string Name, double Price)>();
 
-        // 🔗 Database Connection
+        
         private string connString = $@"Data Source={Environment.MachineName}\SQLEXPRESS; Initial Catalog=PetShopManagementDB; Integrated Security=True";
 
         public Dictionary<string, string[]> subItems = new Dictionary<string, string[]>
@@ -144,10 +144,10 @@ namespace PetShopApp
             Panel pnlProfile = new Panel { Size = new Size(180, 80), Location = new Point(950, 20), Cursor = Cursors.Hand };
             Label lblName = new Label
             {
-                // UserSession theke username niye seta string-e convert kore shob boro hater (Capital) kora holo
+        
                 Text = UserSession.CurrentUsername?.ToString().ToUpper(),
 
-                // Font "Segoe UI" boro hater bold hobe. Size 20 thakle 110 width-e naam kete jete pare, tai adjust kore nish mama
+        
                 Font = new Font("Segoe UI", 18, FontStyle.Bold),
 
                 ForeColor = Color.White,
@@ -280,13 +280,13 @@ namespace PetShopApp
 
         private void AddToLiveCart(string name, string price)
         {
-            // 1. Database theke taaja stock jene neya
+        
             int stockInHand = GetStockFromDB(name);
 
-            // 2. Dekha je cart-e amra ekhon porjonto koyta nisi oi item
+        
             int itemsAlreadyInCart = cartItemsList.Count(x => x.Name == name);
 
-            // 3. 🛑 SAFETY CHECK: Stocker beshi nite gele badha dibo
+        
             if (itemsAlreadyInCart >= stockInHand)
             {
                 MessageBox.Show($"Mama, {name} stock-e ache matro {stockInHand} ta. Ar add kora jabe na!",
@@ -294,7 +294,7 @@ namespace PetShopApp
                 return;
             }
 
-            // 4. Baki logic ager motoi
+        
             double p = double.Parse(price);
             totalBill += p;
 
@@ -303,7 +303,7 @@ namespace PetShopApp
 
             lblTotalAmount.Text = "Total: $ " + totalBill;
 
-            // UI Panel setup
+        
             Panel itemPanel = new Panel { Size = new Size(150, 45), Margin = new Padding(0, 2, 0, 2), BackColor = Color.WhiteSmoke };
             Label lbl = new Label { Text = name.ToUpper() + "\n " + price, Font = new Font("Consolas", 8, FontStyle.Bold), Location = new Point(5, 5), AutoSize = true };
 
@@ -388,30 +388,28 @@ namespace PetShopApp
         }
         private void Action_GenerateBill()
         {
-            // 1. Cart khali kina check
+        
             if (totalBill == 0)
             {
                 MessageBox.Show("Mama, cart khali! Age kichu kinen.");
                 return;
             }
 
-            // 2. Payment Page-er object banano
+        
             CustomerPaymentCashMemo paymentPage = new CustomerPaymentCashMemo();
 
-            // 3. UserSession theke name ar total bill pathano
+        
             string currentUser = string.IsNullOrEmpty(UserSession.CurrentUsername) ? "customer1" : UserSession.CurrentUsername;
             paymentPage.OrderCustomerName = currentUser;
             paymentPage.OrderTotalBill = (decimal)totalBill;
 
-            // 4. MAMA EITA HOCHCHE MAIN KAJK: Temporary list-ta pura pathay deya
-            // Amra database-e ekhon insert korbo na, shudhu list-ta pathabo
             paymentPage.PurchasedItems = this.cartItemsList.ToList();
 
-            // 5. Page change kora
+        
             paymentPage.Show();
             this.Hide();
 
-            // 6. Reset Dashboard Cart (Next order-er jonno ready kora)
+        
             cartItemsList.Clear();
             totalBill = 0;
         }

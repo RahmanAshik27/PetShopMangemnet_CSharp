@@ -121,6 +121,12 @@
   <data name="admin_wallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\admin_wallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="apon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\apon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arafat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arafat.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Ashik" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ashik.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,6 +169,9 @@
   <data name="Grooming_Kit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Grooming_Kit.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="hemel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hemel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Holland_Lop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Holland_Lop.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -189,6 +198,9 @@
   </data>
   <data name="Mini_Rex" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mini_Rex.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mostafiz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mostafiz.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Netherland_Dwarf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Netherland_Dwarf.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -232,8 +244,14 @@
   <data name="Royal_Canin_5kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Royal_Canin_5kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="shajia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shajia.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Siamese" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Siamese.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sohid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sohid.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Toys" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Toys.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

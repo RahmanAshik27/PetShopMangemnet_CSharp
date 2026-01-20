@@ -7,7 +7,7 @@ namespace PetShopApp
 {
     public partial class RecoverPassword : Form
     {
-        // UI Controls
+       
         private TextBox txtUser, txtOldPass, txtMathAns, txtNewPass1, txtNewPass2;
         private Button btnVerify, btnUpdate, btnToggleOld, btnToggleNew;
         private Label lblMathChallenge;
@@ -21,7 +21,7 @@ namespace PetShopApp
 
         }
 
-        // SQL Connection String
+     
         string connString = $@"Data Source={Environment.MachineName}\SQLEXPRESS; Initial Catalog=PetShopManagementDB; Integrated Security=True";
 
         public RecoverPassword()
@@ -47,14 +47,13 @@ namespace PetShopApp
         {
             this.Controls.Clear();
 
-            // --- 1. Header Section ---
+          
             pnlHeader = new Panel { Dock = DockStyle.Top, Height = 120, BackColor = Color.FromArgb(44, 62, 80) };
             Label lblLogo = new Label { Text = "🐾", Font = new Font("Segoe UI", 35), ForeColor = Color.FromArgb(230, 126, 34), Size = new Size(420, 60), Location = new Point(0, 15), TextAlign = ContentAlignment.MiddleCenter };
             Label lblTitle = new Label { Text = "RECOVERY PORTAL", Font = new Font("Segoe UI", 14, FontStyle.Bold), ForeColor = Color.White, Size = new Size(420, 30), Location = new Point(0, 75), TextAlign = ContentAlignment.MiddleCenter };
             pnlHeader.Controls.Add(lblLogo); pnlHeader.Controls.Add(lblTitle);
             this.Controls.Add(pnlHeader);
 
-            // --- 2. Input Card ---
             card = new Panel { Size = new Size(420, 460), Location = new Point(0, 120), BackColor = Color.White };
             this.Controls.Add(card);
 
@@ -70,7 +69,7 @@ namespace PetShopApp
                 btnToggleOld.Text = isOldHidden ? "👁" : "🔒";
             }, card);
 
-            // Math Challenge
+            
             pnlMath = new Panel { Location = new Point(70, 180), Size = new Size(280, 70), BackColor = Color.FromArgb(250, 250, 250), BorderStyle = BorderStyle.FixedSingle };
             lblMathChallenge = new Label { Text = "Loading...", Location = new Point(10, 10), Font = new Font("Segoe UI", 9, FontStyle.Bold), ForeColor = Color.DimGray, AutoSize = true };
             txtMathAns = new TextBox { Location = new Point(12, 32), Width = 100, Font = new Font("Segoe UI", 12), BorderStyle = BorderStyle.FixedSingle };
@@ -84,7 +83,7 @@ namespace PetShopApp
 
             SetupIntegrationAndReset();
 
-            // --- 3. Footer Section ---
+        
             pnlFooter = new Panel { Dock = DockStyle.Bottom, Height = 70, BackColor = Color.FromArgb(44, 62, 80) };
             Panel orangeLine = new Panel { Dock = DockStyle.Top, Height = 4, BackColor = Color.FromArgb(230, 126, 34) };
             Label lblFooter = new Label { Text = "PET SHOP MANAGEMENT SYSTEM\nSecure Password Recovery", ForeColor = Color.FromArgb(189, 195, 199), Font = new Font("Segoe UI", 9), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };

@@ -28,7 +28,6 @@ namespace PetShopApp
         
         string[] partnerList = { "Pathao Fast", "FoodPanda Go", "RedX Logistics", "Jhinku BD", "Shop Pickup" };
 
-        // --- SHUDHU NAME CHANGE KORLAM, KAJ SAME ---
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr MakeRounded(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
@@ -36,13 +35,11 @@ namespace PetShopApp
         {
             InitializeComponent();
             SetupForm();
+           
+            BuildSidebar();
+            BuildHeader(); 
+            BuildFooter(); 
 
-            // 🛠️ ORDER GURUTTO-PURNO (Layering Logic)
-            BuildSidebar(); // 1. Sidebar agey (Full Left Height)
-            BuildHeader();  // 2. Header Top-e
-            BuildFooter();  // 3. Footer Bottom-e (Sidebar-er pashe spacer shoho)
-
-            // 4. MAIN PANEL (Baki faka jaygatu automatic nibe)
             pnlMain = new Panel
             {
                 Dock = DockStyle.Fill,
@@ -51,11 +48,10 @@ namespace PetShopApp
                 AutoScroll = false
             };
             this.Controls.Add(pnlMain);
-            pnlMain.BringToFront(); // Shob layer-er upore rakhar jonno
+            pnlMain.BringToFront(); 
 
             ShowDefaultDashboardContent();
             
-            // Real-time Clock
             Timer timer = new Timer { Interval = 1000 };
             timer.Tick += (s, e) => {
                 if (lblTime != null) lblTime.Text = DateTime.Now.ToString("dddd, MMM dd, yyyy\nhh:mm:ss tt");
@@ -76,7 +72,7 @@ namespace PetShopApp
             pnlSidebar = new Panel { Dock = DockStyle.Left, Width = 280, BackColor = Color.FromArgb(31, 41, 55) };
             this.Controls.Add(pnlSidebar);
 
-            // 🐾 Logo Circle
+            //  Logo Circle
             PictureBox pbLogo = new PictureBox { Size = new Size(80, 80), Location = new Point(100, 20) };
             pbLogo.Paint += (s, e) => {
                 e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -85,7 +81,7 @@ namespace PetShopApp
             };
             pnlSidebar.Controls.Add(pbLogo);
 
-            // 🏷️ Logo Text Label
+            // Logo Text Label
             lblLogo = new Label
             {
                 Text = "🐾 PET SHOP",
@@ -96,7 +92,7 @@ namespace PetShopApp
             };
             pnlSidebar.Controls.Add(lblLogo);
 
-            // 🔘 Sidebar Buttons (Ager motoi normal text)
+            // Sidebar Buttons
             int y = 170;
             AddMenuBtn("📊   Dashboard Overview", y, OpenDashboardOverview);
             AddMenuBtn("📦   Inventory Stock", y += 70, OpenInventoryStock);
@@ -157,7 +153,7 @@ namespace PetShopApp
             };
             this.Controls.Add(pnlFooter);
 
-            // 🛡️ Spacer: Sidebar-er niche jate faka thake (x=280)
+           
             Panel footerSpacer = new Panel
             {
                 Dock = DockStyle.Left,
@@ -202,7 +198,7 @@ namespace PetShopApp
         {
             pnlMain.Controls.Clear();
 
-            // 1. Title - Eita thakbei
+           
             Label lbl = new Label
             {
                 Text = "🏰 SOMRAJJO OVERVIEW",
@@ -213,38 +209,31 @@ namespace PetShopApp
             };
             pnlMain.Controls.Add(lbl);
 
-            // 2. Wallpaper PictureBox
+           
             PictureBox pbWallpaper = new PictureBox
             {
                 Name = "pbDashboardWallpaper",
-                Size = new Size(pnlMain.Width - 60, 400), // Side theke ektu faka rakhbe
+                Size = new Size(pnlMain.Width - 60, 400),
                 Location = new Point(30, 90),
-                SizeMode = PictureBoxSizeMode.StretchImage, // Pic jeno chapa na khay
-                Image = Properties.Resources.admin_wallpaper, // 👈 Mama, tor Resource theke pic-er naam eikhane hobe
-                                                              // Image = Image.FromFile("C:\\path\\to\\your\\pic.jpg"), // Alternative jodi path diye koro
-                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right // Window boro korle eitao boro hobe
+                SizeMode = PictureBoxSizeMode.StretchImage, 
+                Image = Properties.Resources.admin_wallpaper,
+                                                             
+                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right 
             };
 
-            // Jodi ekhon-o resource-e pic na thake, error jeno na dey shetar jonno check
+            
             try
             {
                 pnlMain.Controls.Add(pbWallpaper);
             }
             catch
             {
-                // Pic na paile ekta gray box thakbe just
+  
                 pbWallpaper.BackColor = Color.LightGray;
                 pnlMain.Controls.Add(pbWallpaper);
             }
 
-            // 3. MAMA, Placeholder for future work (Buttons/Tiles)
-            // TODO: Eikhane amra pore custom UserControl ba Summary Tiles call korbo
-            /*
-            DashboardStatsControl stats = new DashboardStatsControl();
-            stats.Dock = DockStyle.Bottom;
-            pnlMain.Controls.Add(stats);
-            */
-        }
+       }
 
         private void ResetButtonColors(object sender)
         {
@@ -252,7 +241,7 @@ namespace PetShopApp
             Button activeBtn = (Button)sender; activeBtn.BackColor = Color.FromArgb(45, 59, 75); activeBtn.ForeColor = Color.White;
         }
 
-        // Event Handlers
+ 
         private void OpenDashboardOverview(object sender, EventArgs e)
         {
             ResetButtonColors(sender);
@@ -264,8 +253,8 @@ namespace PetShopApp
 
         private void LoadDashboardWithDB()
         {
-            pnlMain.Controls.Clear(); // 👈 'this' er bodole 'pnlMain' hobe
-            pnlMain.BackColor = Color.FromArgb(15, 15, 30); // Panel-er color dark hobe
+            pnlMain.Controls.Clear(); 
+            pnlMain.BackColor = Color.FromArgb(15, 15, 30); 
             string revenue = "$0", orders = "0", stock = "0", alerts = "0";
             DataTable dtRecentActivity = new DataTable();
 
@@ -275,24 +264,23 @@ namespace PetShopApp
                 {
                     conn.Open();
 
-                    // 1. Total Revenue
+                    
                     SqlCommand cmdRev = new SqlCommand("SELECT ISNULL(SUM(TotalAmount), 0) FROM Orders", conn);
                     revenue = "$" + Convert.ToDouble(cmdRev.ExecuteScalar()).ToString("N0");
 
-                    // 2. Count Total Orders
+                    
                     SqlCommand cmdOrd = new SqlCommand("SELECT COUNT(*) FROM Orders", conn);
                     orders = cmdOrd.ExecuteScalar().ToString();
 
-                    // 3. Total Inventory Quantity
+                    
                     SqlCommand cmdStock = new SqlCommand("SELECT ISNULL(SUM(Quantity), 0) FROM Inventory", conn);
                     stock = cmdStock.ExecuteScalar().ToString();
 
-                    // 4. Low Stock Alerts
+                    
                     SqlCommand cmdAlert = new SqlCommand("SELECT COUNT(*) FROM Inventory WHERE Quantity < 5", conn);
                     alerts = cmdAlert.ExecuteScalar().ToString().PadLeft(2, '0');
 
-                    // 5. Fetch Recent Activities (FIXED JOIN QUERY)
-                    // Tor schema te Orders e CustomerId ache, tai Users er sathe join kore FullName anchi
+                    
                     string query = @"
                 SELECT TOP 5 
                     o.CashMemoNo as [INV ID], 
@@ -317,7 +305,7 @@ namespace PetShopApp
 
         private void BuildOverviewUI(string rev, string ord, string stck, string alrt, DataTable dt)
         {
-            // --- 1. HEADER SECTION ---
+            
             Label lblTitle = new Label
             {
                 Text = "👑 SOMRAJJO OVERVIEW",
@@ -331,7 +319,7 @@ namespace PetShopApp
             {
                 Text = "Live Data: Connected to PetShopManagementDB",
                 Font = new Font("Segoe UI", 10, FontStyle.Italic),
-                ForeColor = Color.FromArgb(0, 255, 255), // Cyan color for connection status
+                ForeColor = Color.FromArgb(0, 255, 255), 
                 Location = new Point(34, 60),
                 AutoSize = true,
                 BackColor = Color.Transparent
@@ -339,13 +327,13 @@ namespace PetShopApp
             pnlMain.Controls.Add(lblTitle);
             pnlMain.Controls.Add(lblSub);
 
-            // --- 2. LIVE VIBRANT TILES ---
+            
             AddGradientTile("TOTAL REVENUE", rev, "💰", Color.FromArgb(0, 242, 96), Color.FromArgb(5, 117, 230), 25, 90);
             AddGradientTile("TOTAL ORDERS", ord, "📦", Color.FromArgb(252, 74, 26), Color.FromArgb(247, 183, 51), 232, 90);
             AddGradientTile("PETS IN STOCK", stck, "🐾", Color.FromArgb(142, 45, 226), Color.FromArgb(74, 0, 224), 439, 90);
             AddGradientTile("LOW STOCK ALERTS", alrt, "🔥", Color.FromArgb(255, 0, 128), Color.FromArgb(120, 2, 6), 646, 90);
 
-            // --- 3. RECENT ACTIVITY PANEL ---
+            
             Panel pnlTableContainer = new Panel
             {
                 Size = new Size(800, 290),
@@ -372,9 +360,9 @@ namespace PetShopApp
             };
             pnlTableContainer.Controls.Add(lblTableLabel);
 
-            // --- 4. NEON DATAGRID ---
+            
             DataGridView dgv = SetupNeonGrid();
-            dgv.DataSource = dt; // Database theke asha table ta eikhane set hobe
+            dgv.DataSource = dt; 
 
             pnlTableContainer.Controls.Add(dgv);
             pnlMain.Controls.Add(pnlTableContainer);
@@ -457,7 +445,7 @@ namespace PetShopApp
                 {
                     conn.Open();
 
-                    // 1. LEFT SIDE: Category wise total sales
+                    
                     string pieQuery = @"SELECT Category, SUM(ISNULL(SellCount, 0)) as Total 
                                         FROM Inventory 
                                         GROUP BY Category 
@@ -473,7 +461,7 @@ namespace PetShopApp
                         }
                     }
 
-                    // 2. RIGHT & BOTTOM: Top 6 Items
+                    
                     string itemQuery = @"
                     SELECT Category, Breed, SellCount 
                     FROM (
@@ -512,7 +500,7 @@ namespace PetShopApp
         {
             pnlMain.Controls.Clear();
 
-            // 1. MAIN HEADER
+            
             Label lblHeader = new Label
             {
                 Text = "👑 EMPIRE LIVE INTELLIGENCE",
@@ -523,7 +511,7 @@ namespace PetShopApp
             };
             pnlMain.Controls.Add(lblHeader);
 
-            // 2. BIG DONUT PIE CHART (Left Side)
+            
             Panel pnlBigPie = new Panel { Size = new Size(400, 200), Location = new Point(25, 70), BackColor = Color.Transparent };
             pnlBigPie.Paint += (s, e) => {
                 e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -553,7 +541,7 @@ namespace PetShopApp
             };
             pnlMain.Controls.Add(pnlBigPie);
 
-            // --- 3. RIGHT SIDE: 4 CHAMPIONS (With Pics) ---
+            
             Label lblAwardTitle = new Label
             {
                 Text = "🏆 CHAMPIONS",
@@ -570,7 +558,7 @@ namespace PetShopApp
                 AddAwardCard(topItems[k], 460 + (c * 190), 81 + (r * 125));
             }
 
-            // 4. BOTTOM HEADING
+            
             Label lblBottomHeading = new Label
             {
                 Text = "📊 TOP PERFORMANCE BY PRODUCT (BREED)",
@@ -581,7 +569,7 @@ namespace PetShopApp
             };
             pnlMain.Controls.Add(lblBottomHeading);
 
-            // 5. MINI GRAPHS
+            
             int xStart = 25, yStart = 365, cardW = 260, cardH = 65;
             Color[] itemColors = { Color.OrangeRed, Color.DodgerBlue, Color.HotPink, Color.Gold, Color.Lime, Color.Cyan };
 
@@ -589,16 +577,16 @@ namespace PetShopApp
             foreach (var item in topItems) if (item.Sales > maxSales) maxSales = item.Sales;
             if (maxSales == 0) maxSales = 1;
 
-            // BuildProDashboard মেথডের লুপের ভেতরে
+            
             for (int j = 0; j < topItems.Count; j++)
             {
                 int row = j / 3;
                 int col = j % 3;
 
-                // ক্যাটাগরি অনুযায়ী প্রগ্রেস বার উইডথ বের করা
+            
                 int progressWidth = (int)((topItems[j].Sales / (float)maxSales) * 230);
 
-                // টাইটেলটা এভাবে দিলে দেখতে জোস লাগবে: "DOG: LABRADOR"
+            
                 string displayTitle = $"{topItems[j].Category.ToUpper()}: {topItems[j].ItemName.ToUpper()}";
 
                 AddItemStat(displayTitle,
@@ -617,21 +605,21 @@ namespace PetShopApp
 
         private void AddAwardCard(ItemStat item, int x, int y)
         {
-            // Background ta transparent rakhle gradient ta shundor futbe
+            
             Panel card = new Panel { Size = new Size(165, 105), Location = new Point(x, y), BackColor = Color.Transparent };
 
             card.Paint += (s, e) => {
                 Graphics g = e.Graphics;
                 g.SmoothingMode = SmoothingMode.AntiAlias;
 
-                // 1. Background Glassy Look (Dark Gradient)
+            
                 Rectangle rect = new Rectangle(0, 0, card.Width - 5, card.Height - 5);
                 using (LinearGradientBrush lgb = new LinearGradientBrush(rect, Color.FromArgb(45, 45, 80), Color.FromArgb(20, 20, 40), 45f))
                 {
                     g.FillRoundedRectangle(lgb, 0, 0, rect.Width, rect.Height, 12);
                 }
 
-                // 2. Gold Border
+            
                 using (Pen borderPen = new Pen(Color.FromArgb(120, Color.Gold), 1))
                 {
                     g.DrawRoundedRectangle(borderPen, 0, 0, rect.Width, rect.Height, 12);
@@ -639,7 +627,7 @@ namespace PetShopApp
 
                 try
                 {
-                    // 3. Image Frame Logic
+            
                     string resName = item.ItemName.Replace(" ", "_");
                     object img = Properties.Resources.ResourceManager.GetObject(resName);
 
@@ -660,14 +648,14 @@ namespace PetShopApp
                 }
                 catch { g.FillRoundedRectangle(Brushes.Maroon, 10, 10, 85, 65, 8); }
 
-                // 4. Gold Badge (TOP)
+            
                 g.FillRoundedRectangle(new SolidBrush(Color.FromArgb(220, Color.Gold)), 110, 15, 60, 20, 6);
                 g.DrawString("CHAMP", new Font("Segoe UI Black", 7), Brushes.Black, 118, 18);
 
-                // 5. Name and Sales
+            
                 g.DrawString(item.ItemName.ToUpper(), new Font("Segoe UI Black", 9), Brushes.White, 10, 82);
 
-                // Neon green indicator
+            
                 g.FillEllipse(new SolidBrush(Color.FromArgb(0, 255, 150)), 12, 105, 7, 7);
                 g.DrawString(item.Sales + " SOLD", new Font("Segoe UI Bold", 7), Brushes.SpringGreen, 24, 102);
             };
@@ -707,7 +695,7 @@ namespace PetShopApp
         { 
             ResetButtonColors(sender);
             pnlMain.Controls.Clear();
-            pnlMain.BackColor = Color.FromArgb(10, 10, 25); // তোর পছন্দের Midnight Blue
+            pnlMain.BackColor = Color.FromArgb(10, 10, 25);
             LoadLogisticsHub();
         }
         private void LoadLogisticsHub()
@@ -750,7 +738,7 @@ namespace PetShopApp
             float totalJobs = partners.Sum(x => x.Count);
             float startAngle = -90;
 
-            // Chart Area (Ektu compact kora hoyeche jate shundor lage)
+            
             Rectangle chartRect = new Rectangle(40, 50, 180, 180);
             Color[] sliceColors = { Color.Cyan, Color.HotPink, Color.Orange, Color.MediumSlateBlue, Color.LimeGreen };
 
@@ -759,40 +747,40 @@ namespace PetShopApp
                 float sweepAngle = (totalJobs > 0) ? (partners[i].Count / totalJobs) * 360 : 360f / partners.Count;
                 Color currentColor = sliceColors[i % sliceColors.Length];
 
-                // --- MODERN DOUGHNUT RING ---
+            
                 using (Pen p = new Pen(currentColor, 35))
-                { // Ring thickness 12
+                { 
                     g.DrawArc(p, chartRect, startAngle, sweepAngle);
                 }
 
-                // --- CLEAN & COMPACT LEGEND ---
+                
                 int ly = 65 + (i * 38);
 
-                // Chhotto Color Indicator (Vertical bar style)
+                
                 g.FillRectangle(new SolidBrush(currentColor), 260, ly + 4, 4, 25);
 
-                // Partner name (Sleek White/Orange combo)
+                
                 g.DrawString(partners[i].Name.ToUpper(), new Font("Segoe UI", 8.5f, FontStyle.Bold), Brushes.Orange, 275, ly);
 
                 float percent = (totalJobs > 0) ? (partners[i].Count / totalJobs) * 100 : 0;
-                // Percentage (Gray font jate choke na lage)
+                
                 g.DrawString($"{percent:0}% Share • {partners[i].Count} Jobs", new Font("Segoe UI", 7.5f), Brushes.LightGray, 275, ly + 15);
 
                 startAngle += sweepAngle;
             }
 
-            // --- CENTER TEXT (Total Jobs) ---
+            
             g.DrawString(totalJobs.ToString(), new Font("Segoe UI Black", 16), Brushes.Cyan, 110, 130);
             g.DrawString("TOTAL", new Font("Segoe UI Bold", 7), Brushes.Gray, 118, 115);
 
-            // Panel Title (Subtle)
+            
             g.DrawString("PARTNER ANALYTICS", new Font("Segoe UI Black", 8), Brushes.DarkCyan, 15, 15);
         }
 
         private void AddDualManagementSection(int x, int y)
         {
             Panel pnl = new Panel { Size = new Size(320, 280), Location = new Point(x, y), BackColor = Color.FromArgb(25, 25, 55) };
-            // Puran name CreateRoundRectRgn theke MakeRounded e replace kora holo logic thik rakhte
+            
             pnl.Region = Region.FromHrgn(MakeRounded(0, 0, pnl.Width, pnl.Height, 20, 20));
 
             Label l1 = new Label { Text = "REGISTER NEW CONTRACT", ForeColor = Color.SpringGreen, Location = new Point(20, 15), AutoSize = true, Font = new Font("Segoe UI Bold", 9) };
@@ -874,7 +862,7 @@ namespace PetShopApp
 
 
 
-        // ১. কাস্টমার রিভিউ পেজ ওপেন করার মেথড
+        
         private async void OpenCustomerReviews(object sender, EventArgs e)
         {
             ResetButtonColors(sender);
@@ -884,32 +872,31 @@ namespace PetShopApp
 
             SetupDarkPremiumUI();
 
-            // Eikhane await use kora hoyeche jate UI load hoye jay, 
-            // ar data background e load hote thake.
+        
             await LoadReviewDashboardDataAsync();
         }
 
         private void SetupDarkPremiumUI()
         {
-            // --- Form Styling (Dark Theme) ---
+        
             pnlMain.Size = new Size(870, 560);
-            pnlMain.BackColor = Color.FromArgb(10, 10, 25); // Deep Midnight Blue
+            pnlMain.BackColor = Color.FromArgb(10, 10, 25); 
            
 
-            // --- 1. Top Glass Header ---
+            
             Panel pnlHeader = new Panel { Size = new Size(870, 45), Dock = DockStyle.Top, BackColor = Color.FromArgb(15, 15, 35) };
             Label lblTitle = new Label
             {
                 Text = "Welcome back, Boss! Your customers are talking about their pets today.",
                 Font = new Font("Segoe UI Black", 15, FontStyle.Bold),
-                ForeColor = Color.FromArgb(0, 210, 255), // Neon Blue
+                ForeColor = Color.FromArgb(0, 210, 255),
                 Location = new Point(25, 0),
                 AutoSize = true
             };
             pnlHeader.Controls.Add(lblTitle);
             pnlMain.Controls.Add(pnlHeader);
 
-            // --- 2. LEFT: Social Review Feed (580px) ---
+            
             flowReviewList = new FlowLayoutPanel
             {
                 Location = new Point(15, 90),
@@ -922,13 +909,13 @@ namespace PetShopApp
             };
             pnlMain.Controls.Add(flowReviewList);
 
-            // --- 3. RIGHT: Fan Favorite Spotlight (255px) ---
+            
             pnlSpotlight = new Panel
             {
                 Location = new Point(600, 85),
                 Size = new Size(250, 390),
                 BackColor = Color.FromArgb(20, 20, 45),
-                AutoScroll = false // Spotlight-e sadharonoto scroll lage na, tai false rakha bhalo
+                AutoScroll = false 
             };
             pnlSpotlight.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlSpotlight.Width, pnlSpotlight.Height, 30, 30));
             pnlMain.Controls.Add(pnlSpotlight);
@@ -963,7 +950,7 @@ namespace PetShopApp
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
-            // Glow Effect Line
+            
             Panel pnlGlow = new Panel { Size = new Size(120, 3), Location = new Point(65, 370), BackColor = Color.FromArgb(0, 210, 255) };
 
             pnlSpotlight.Controls.AddRange(new Control[] { lblBadge, picSpot, lblName, lblDesc, pnlGlow });
@@ -973,7 +960,7 @@ namespace PetShopApp
         {
             flowReviewList.Controls.Clear();
 
-            // Database er kaj background thread-e hobe
+            
             var reviews = await Task.Run(() =>
             {
                 var reviewData = new System.Collections.Generic.List<dynamic>();
@@ -1001,13 +988,13 @@ namespace PetShopApp
                 return reviewData;
             });
 
-            // UI-te card gulo add kora (Main Thread-e)
+            
             foreach (var rev in reviews)
             {
                 flowReviewList.Controls.Add(CreateDarkCard(rev.User, rev.Pet, rev.Msg, rev.Rating, rev.Date));
             }
 
-            // Top Pet Spotlight Update (Background Query)
+            
             await UpdateSpotlightAsync();
         }
 
@@ -1069,7 +1056,7 @@ namespace PetShopApp
 
     public static class GraphicsExtensions
     {
-        // Rounded Rectangle Fill korar jonno
+        
         public static void FillRoundedRectangle(this Graphics g, Brush brush, int x, int y, int width, int height, int radius)
         {
             using (GraphicsPath path = GetRoundedPath(x, y, width, height, radius))
@@ -1078,7 +1065,7 @@ namespace PetShopApp
             }
         }
 
-        // Rounded Rectangle Border/Outline anar jonno (Eta missing silo)
+        
         public static void DrawRoundedRectangle(this Graphics g, Pen pen, int x, int y, int width, int height, int radius)
         {
             using (GraphicsPath path = GetRoundedPath(x, y, width, height, radius))
@@ -1087,7 +1074,7 @@ namespace PetShopApp
             }
         }
 
-        // Path ta bar bar lagbe tai common function kora hoyeche
+        
         public static void AddRoundedRectangle(this GraphicsPath path, Rectangle rect, int radius)
         {
             path.AddArc(rect.X, rect.Y, radius, radius, 180, 90);

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Data.SqlClient; // 1. SQL Namespace add korlam
+using System.Data.SqlClient; 
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
@@ -9,15 +9,15 @@ namespace PetShopApp
 {
     public partial class Form1 : Form
     {
-        // 2. Connection String - Dynamic PC Name detect korbe
+     
         string connString = $@"Data Source={Environment.MachineName}\SQLEXPRESS; Initial Catalog=PetShopManagementDB; Integrated Security=True";
         Panel mainPanel;
-        bool showWallpaper = true; // Eita wallpaper control korbe
+        bool showWallpaper = true; 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
-        // Color Palette
-        Color primaryOrange = Color.FromArgb(255, 120, 40); // Vibrant Orange
+        
+        Color primaryOrange = Color.FromArgb(255, 120, 40); 
         Color darkBg = Color.FromArgb(15, 15, 30);
         Color cardBg = Color.FromArgb(25, 25, 50);
         public Form1()
@@ -33,7 +33,7 @@ namespace PetShopApp
             InitializePetShopUI();
             this.CenterToScreen();
 
-            // Database connection check korar jonno (Optional testing)
+            
             TestConnection();
         }
 
@@ -59,37 +59,36 @@ namespace PetShopApp
             this.MinimumSize = new Size(1000, 700);
             this.BackColor = Color.White;
 
-            // --- 1. Header (Docks to Top) ---
+            
             Panel header = new Panel { Dock = DockStyle.Top, Height = 130, BackColor = Color.FromArgb(23, 31, 42) };
             Label lblWelcome = new Label { Text = "🐾 Welcome to Our Premium Pet Shop", Font = new Font("Segoe UI", 30, FontStyle.Bold), ForeColor = Color.FromArgb(230, 126, 34), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
             header.Controls.Add(lblWelcome);
 
-            // --- 2. Footer (Docks to Bottom) ---
+            
             Panel footer = new Panel { Dock = DockStyle.Bottom, Height = 60, BackColor = Color.FromArgb(230, 126, 34) };
             Label lblFooter = new Label { Text = "🐾 \"Pets are not our whole life...\" | Premium Pet Care © 2026", Font = new Font("Segoe UI", 16, FontStyle.Bold | FontStyle.Italic), ForeColor = Color.White, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
             footer.Controls.Add(lblFooter);
 
-            // --- 3. Sidebar (Docks to Left) ---
+            
             Panel sidebar = new Panel { Dock = DockStyle.Left, Width = 260, BackColor = Color.FromArgb(31, 41, 55) };
 
-            // --- 4. Main Panel (Eita ekhon majhkhane thakbe) ---
+            
             mainPanel = new Panel { Dock = DockStyle.Fill, BackColor = Color.White };
             mainPanel.Paint += MainPanel_Paint_Logic;
 
-            // --- MAMA EI SEQUENCE TA KHAYAL KOR ---
-            // Age fixed controls add korbo, shobar sheshe Fill wala panel
+            
             this.Controls.Add(sidebar);
             this.Controls.Add(header);
             this.Controls.Add(footer);
             this.Controls.Add(mainPanel);
 
-            // Z-Order Fix: Jate Sidebar ar Header shobar upore thake
+            
             sidebar.BringToFront();
             header.BringToFront();
             footer.BringToFront();
-            mainPanel.SendToBack(); // SendToBack dile mainPanel shubho majher faka jayga টুকু দখল korbe
+            mainPanel.SendToBack(); 
 
-            // --- Sidebar Elements (Tor puron button code) ---
+            
             PictureBox profilePic = new PictureBox { Size = new Size(110, 110), Location = new Point(75, 30), BackColor = Color.Transparent, SizeMode = PictureBoxSizeMode.StretchImage };
             profilePic.Paint += ProfilePic_Paint;
             sidebar.Controls.Add(profilePic);
@@ -105,7 +104,7 @@ namespace PetShopApp
         }
         private void MainPanel_Paint_Logic(object sender, PaintEventArgs pe)
         {
-            // Jodi showWallpaper false hoy (mane jokhon Doctor Hub-e jabi), tokhon eita ar draw korbe na
+            
             if (!showWallpaper) return;
 
             Image img = Properties.Resources.projectWallpaper;
@@ -129,7 +128,7 @@ namespace PetShopApp
             Image img = Properties.Resources.projectWallpaper;
             if (img != null)
             {
-                // Image-ta center-e thakbe
+            
                 int x = (mainPanel.Width - img.Width) / 2;
                 int y = (mainPanel.Height - img.Height) / 2;
                 pe.Graphics.DrawImage(img, x, y, img.Width, img.Height);
@@ -156,39 +155,39 @@ namespace PetShopApp
             }
         }
 
-        // --- BUTTON ACTIONS ---
+        
 
         private void AdminLogin_Click(object sender, EventArgs e)
         {
-            ResetWallpaper(); // Wallpaper back anbe
+            ResetWallpaper(); 
             LoginForm login = new LoginForm();
             login.Show();
         }
 
         private void CustomerLogin_Click(object sender, EventArgs e)
         {
-            ResetWallpaper(); // Wallpaper back anbe
+            ResetWallpaper(); 
             CustomerLoginPage custLogin = new CustomerLoginPage();
             custLogin.Show();
         }
 
         private void ReviewPage_Click(object sender, EventArgs e)
         {
-            ResetWallpaper(); // Wallpaper back anbe
+            ResetWallpaper(); 
             ReviewPageCheck reviews = new ReviewPageCheck();
             reviews.Show();
         }
 
-        // Chotto helper method jate bar bar code na likhte hoy
+        
         private void ResetWallpaper()
         {
             showWallpaper = true;
             mainPanel.Controls.Clear();
             mainPanel.BackColor = Color.White;
-            mainPanel.Invalidate(); // Wallpaper drawing trigger korbe
+            mainPanel.Invalidate(); 
         }
 
-        // 1. Button click ekhon shudhu method call korbe
+        
         private void DoctorHub_Click(object sender, EventArgs e)
         {
             LoadDoctorHub();
@@ -200,12 +199,11 @@ namespace PetShopApp
             mainPanel.Controls.Clear();
             mainPanel.BackColor = darkBg;
 
-            // 1. Ekta Container Panel nibo jeta Header/Footer theke ektu faka thakbe
-            // Eita dile cards gulo ekdom border-e gheshe thakbe na
+        
             mainPanel.Padding = new Padding(10);
 
-            // 2. FlowLayoutPanel setup
-            // LoadDoctorHub er bhitorer flow panel setup ta emon kor:
+        
+        
             FlowLayoutPanel flow = new FlowLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -214,56 +212,53 @@ namespace PetShopApp
                 WrapContents = true,
                 FlowDirection = FlowDirection.LeftToRight,
 
-                // Ekhane 1st number ta Left, 2nd ta TOP (niche namanor jonno), 
-                // 3rd ta Right, 4th ta Bottom.
-                // Top Padding 50-60 dile card gulo header theke besh niche neme asbe.
                 Padding = new Padding(280, 120, 25, 20)
             };
 
-            // Scrollbar smooth korar jonno eita dorkar
+        
             flow.HorizontalScroll.Visible = false;
             flow.HorizontalScroll.Enabled = false;
 
             mainPanel.Controls.Add(flow);
 
-            // 3. Doctor Data
+        
             string[] names = { "Md. Ashikur Rahman Mirza", "Mahabub Alom Apon", "Shajia Afrin",  "AB Arafat", "Arifin Hemel", "Mostafizur Rahman", "MD Shahed Bhuiyan", "Assistant Doctor" };
             string[] resNames = { "Ashik", "apon", "shajia", "arafat", "hemel", "Mostafiz", "sohid", "none" };
 
-            // Card gulo add kora
+        
             for (int i = 0; i < names.Length; i++)
             {
-                // Chhoto size-er card gulo ekhane add hobe
+        
                 flow.Controls.Add(CreateDoctorCard(names[i], "Veterinary Specialist", resNames[i]));
             }
 
-            // Fix: Force Layout update
+        
             flow.PerformLayout();
         }
         private Panel CreateDoctorCard(string name, string spec, string resName)
         {
-            // 1. Card Size (320x500) - 256px image dhorar jonno card boro kora holo
+        
             Panel card = new Panel { Size = new Size(320, 500), BackColor = cardBg, Margin = new Padding(20) };
             card.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, card.Width, card.Height, 30, 30));
 
-            // 2. PictureBox (256x256)
+        
             PictureBox pic = new PictureBox
             {
                 Size = new Size(256, 256),
-                Location = new Point(32, 25), // Center calculation: (320-256)/2 = 32
+                Location = new Point(32, 25), 
                 BackColor = Color.FromArgb(45, 52, 71),
                 SizeMode = PictureBoxSizeMode.Zoom
             };
             pic.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 256, 256, 20, 20));
 
-            // Resource Loading with High Quality
+            
             object obj = PetShopApp.Properties.Resources.ResourceManager.GetObject(resName);
             Image finalImage = null;
 
             if (obj != null && obj is Image)
             {
                 Image rawImg = (Image)obj;
-                // 256x256 smooth bitmap create kora
+            
                 Bitmap smoothImg = new Bitmap(256, 256);
                 using (Graphics g = Graphics.FromImage(smoothImg))
                 {
@@ -281,7 +276,7 @@ namespace PetShopApp
                 finalImage = SystemIcons.Information.ToBitmap();
             }
 
-            // 3. Labels (Niche align kora holo)
+            
             Label lblN = new Label
             {
                 Text = name,
@@ -289,7 +284,7 @@ namespace PetShopApp
                 ForeColor = Color.White,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Size = new Size(310, 40),
-                Location = new Point(5, 300) // Image er pore gap rekhe
+                Location = new Point(5, 300) 
             };
 
             Label lblS = new Label
@@ -302,7 +297,7 @@ namespace PetShopApp
                 Location = new Point(5, 345)
             };
 
-            // 4. Appointment Button
+            
             Button btn = new Button
             {
                 Text = "BOOK APPOINTMENT",
@@ -318,7 +313,7 @@ namespace PetShopApp
             btn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btn.Width, btn.Height, 20, 20));
             btn.Click += (s, e) => ShowAppointmentForm(name, finalImage);
 
-            // Controls Add
+            
             card.Controls.AddRange(new Control[] { pic, lblN, lblS, btn });
             return card;
         }
@@ -329,7 +324,7 @@ namespace PetShopApp
 
             Label title = new Label { Text = "Appointment Booking", Font = new Font("Segoe UI", 18, FontStyle.Bold), ForeColor = primaryOrange, Location = new Point(65, 25), AutoSize = true };
 
-            // Input Fields
+            
             Label l1 = new Label { Text = "Pet Name:", ForeColor = Color.Silver, Location = new Point(50, 90), AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold) };
             TextBox txtPet = new TextBox { Width = 300, Location = new Point(50, 115), Font = new Font("Segoe UI", 12), BackColor = Color.White };
 
@@ -376,7 +371,7 @@ namespace PetShopApp
             };
             receipt.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, 500, 520, 35, 35));
 
-            // --- 1. Header ---
+            
             Panel header = new Panel { Dock = DockStyle.Top, Height = 90, BackColor = Color.FromArgb(23, 31, 42) };
             Label lblLogo = new Label
             {
@@ -389,23 +384,23 @@ namespace PetShopApp
             };
             header.Controls.Add(lblLogo);
 
-            // --- 2. Footer ---
+            
             Panel footer = new Panel { Dock = DockStyle.Bottom, Height = 50, BackColor = primaryOrange };
             Label lblSlogan = new Label { Text = "❤ WE CARE FOR YOUR PET LIKE FAMILY", Font = new Font("Segoe UI", 9, FontStyle.Bold), ForeColor = Color.White, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
             footer.Controls.Add(lblSlogan);
 
-            // --- 3. Large Background Paw (Bottom Left) ---
+            
             Label lblLogo2 = new Label
             {
                 Text = "🐾",
                 Font = new Font("Segoe UI", 75),
-                ForeColor = Color.FromArgb(230, 126, 34), // Tor dewa Orange color
+                ForeColor = Color.FromArgb(230, 126, 34), 
                 Size = new Size(100, 80),
-                Location = new Point(20, 365), // Akdom left-e footer-er upore
+                Location = new Point(20, 365), 
                 BackColor = Color.Transparent
             };
 
-            // --- 4. Doctor Section ---
+ 
             PictureBox p = new PictureBox
             {
                 Image = docImg,
@@ -420,7 +415,7 @@ namespace PetShopApp
             Label dSpec = new Label { Text = "VETERINARY SPECIALIST", Font = new Font("Segoe UI", 7, FontStyle.Bold), Location = new Point(10, 275), Width = 190, TextAlign = ContentAlignment.MiddleCenter, ForeColor = primaryOrange };
             Label dQuote = new Label { Text = "\"Healing Hands, Loving Hearts\"", Font = new Font("Segoe UI", 7, FontStyle.Italic), Location = new Point(10, 295), Width = 190, TextAlign = ContentAlignment.MiddleCenter, ForeColor = Color.Gray };
 
-            // --- 5. Token Info ---
+ 
             Random rnd = new Random();
             int sl = rnd.Next(1, 15);
             Label lblTitle = new Label { Text = "APPOINTMENT TOKEN", Font = new Font("Segoe UI Black", 13), ForeColor = Color.FromArgb(20, 120, 20), Location = new Point(220, 110), AutoSize = true };
@@ -439,7 +434,7 @@ namespace PetShopApp
                 ForeColor = Color.Black
             };
 
-            // --- 6. Print Button ---
+ 
             Button btnClose = new Button
             {
                 Text = "PRINT & CLOSE",
@@ -455,7 +450,7 @@ namespace PetShopApp
             btnClose.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, btnClose.Width, btnClose.Height, 15, 15));
             btnClose.Click += (s, e) => receipt.Close();
 
-            // Controls Add (lblLogo2 alada vabe add holo)
+ 
             receipt.Controls.AddRange(new Control[] { header, footer, p, dName, dSpec, dQuote, lblTitle, line, info, btnClose, lblLogo2 });
 
             receipt.ShowDialog(this);
