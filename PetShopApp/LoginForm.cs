@@ -9,22 +9,21 @@ namespace PetShopApp
     {
         private TextBox txtUser;
         private TextBox txtPass;
-        private Button btnTogglePass; // Notun
-        private Button btnForgotPass; // Notun
+        private Button btnTogglePass; 
+        private Button btnForgotPass; 
         private bool isPassHidden = true;
-        private string _userType;
+        
         private Panel pnlHeader;
-        private Panel pnlFooter;
+      
 
 
         string connString = $@"Data Source={Environment.MachineName}\SQLEXPRESS; Initial Catalog=PetShopManagementDB; Integrated Security=True";
 
         public LoginForm(string userType = "Admin")
         {
-            InitializeComponent();
-            _userType = userType;
-            ConfigureForm(userType);
-            CreateLoginUI(userType);
+            InitializeComponent(); // Prothome eita thakbe
+            ConfigureForm(userType); // Form settings
+            CreateLoginUI(userType); // EI METHOD CALL NA KORLE DESIGN ASHBE NA
         }
 
         private void ConfigureForm(string title)
@@ -45,7 +44,7 @@ namespace PetShopApp
             pnlHeader = new Panel();
             pnlHeader.Dock = DockStyle.Top;
             pnlHeader.Height = 130;
-            pnlHeader.BackColor = Color.FromArgb(44, 62, 80);
+            pnlHeader.BackColor = Color.FromArgb(23, 31, 42);
 
             Label lblLogo = new Label();
             lblLogo.Text = "🐾";
@@ -130,7 +129,7 @@ namespace PetShopApp
             this.Controls.Add(btnForgotPass);
 
             // --- 5. Footer Section ---
-            Panel pnlFooter = new Panel { Dock = DockStyle.Bottom, Height = 60, BackColor = Color.FromArgb(44, 62, 80) };
+            Panel pnlFooter = new Panel { Dock = DockStyle.Bottom, Height = 60, BackColor = Color.FromArgb(23, 31, 42) };
             Label lblFooterText = new Label { Text = "Premium Pet Care © 2026", ForeColor = Color.White, Font = new Font("Segoe UI", 9, FontStyle.Italic), Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
             pnlFooter.Controls.Add(lblFooterText);
             this.Controls.Add(pnlFooter);
@@ -144,7 +143,10 @@ namespace PetShopApp
         // DATABASE LOGIN LOGIC (Tomar dewa logic-ta eikhane thakbe)
         private void HandleLoginAction(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUser.Text.Trim()) || string.IsNullOrEmpty(txtPass.Text))
+            string user = txtUser.Text.Trim();
+            string pass = txtPass.Text.Trim();
+
+            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show("Mama, Username ar Password dorkar!", "Opps", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -155,33 +157,41 @@ namespace PetShopApp
                 try
                 {
                     con.Open();
-                    string query = "SELECT UserRole FROM Users WHERE Username=@user AND Password=@pass";
+                    // Query-te fixed kore dilam jate shudhu Admin dhukte pare
+                    string query = "SELECT UserId FROM Users WHERE Username=@user AND Password=@pass AND UserRole='Admin'";
                     SqlCommand cmd = new SqlCommand(query, con);
-                    cmd.Parameters.AddWithValue("@user", txtUser.Text.Trim());
-                    cmd.Parameters.AddWithValue("@pass", txtPass.Text.Trim());
+                    cmd.Parameters.AddWithValue("@user", user);
+                    cmd.Parameters.AddWithValue("@pass", pass);
 
-                    SqlDataReader dr = cmd.ExecuteReader();
+                    object result = cmd.ExecuteScalar(); // Shudhu UserId return korbe jodi thake
 
-                    if (dr.Read())
+                    if (result != null)
                     {
-                        string roleFromDB = dr["UserRole"].ToString();
-                        if (roleFromDB.Equals(_userType, StringComparison.OrdinalIgnoreCase))
-                        {
-                            MessageBox.Show($"🐾 Welcome Back, {roleFromDB}!", "Success");
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Mama, tumi to {roleFromDB}! Eikhan diye dhukte parbe na.", "Role Mismatch");
-                        }
+                        // ✅ 1. Username ta global session-e rakha jate next page pabe
+                        UserSession.CurrentUsername = user;
+                        UserSession.CurrentUserID = Convert.ToInt32(result);
+
+                        // ✅ 2. Admin Dashboard e jawa
+                        AdminDashboard dashboard = new AdminDashboard();
+                        dashboard.Show();
+                        this.Hide();
                     }
                     else
                     {
-                        MessageBox.Show("Oops! Username ba Password thik nai mama.", "Login Failed");
+                        // ❌ 3. Database-e role check koro 'Admin' (A boro hater kina dekhish)
+                        MessageBox.Show("Oops! Admin username ba password milche na mama.", "Login Failed");
                     }
                 }
-                catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

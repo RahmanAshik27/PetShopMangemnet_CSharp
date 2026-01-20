@@ -118,6 +118,84 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="admin_wallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\admin_wallpaper.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bengal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bengal.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Budgerigar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Budgerigar.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bulldog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bulldog.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Canary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Canary.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cockatiel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cockatiel.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dewormer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dewormer.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Drools_1kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drools_1kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Drools_2kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drools_2kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Drools_5kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drools_5kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dutch_Rabbit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Dutch_Rabbit.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Flemish_Giant" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Flemish_Giant.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="German_Shepherd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\German_Shepherd.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grooming_Kit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Grooming_Kit.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Holland_Lop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Holland_Lop.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Husky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Husky.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Labrador" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Labrador.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Lovebird" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lovebird.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Maine_Coon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Maine_Coon.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Me_O_1kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Me_O_1kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Me_O_2kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Me_O_2kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Me_O_5kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Me_O_5kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mini_Rex" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mini_Rex.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Netherland_Dwarf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Netherland_Dwarf.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Parrot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Parrot.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Persian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Persian.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="petLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\petLogo.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -127,7 +205,49 @@
   <data name="petWall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\petWall.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Pet_Bed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pet_Bed.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pet_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pet_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Poodle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Poodle.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="projectWallpaper" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\projectWallpaper.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ragdoll" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ragdoll.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Royal_Canin_1kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Royal_Canin_1kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Royal_Canin_2kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Royal_Canin_2kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Royal_Canin_5kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Royal_Canin_5kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Siamese" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Siamese.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Toys" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Toys.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Vaccine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Vaccine.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Vitamins" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Vitamins.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Whiskas_1kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Whiskas_1kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Whiskas_2kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Whiskas_2kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Whiskas_5kg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Whiskas_5kg.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

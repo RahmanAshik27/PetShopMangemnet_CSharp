@@ -159,13 +159,15 @@ namespace PetShopApp
             lblReg.ForeColor = Color.Gray;
             lblReg.Font = new Font("Segoe UI", 9, FontStyle.Underline);
             lblReg.Cursor = Cursors.Hand;
-            lblReg.Click += (s, e) => { MessageBox.Show("Registration system logic pore add korbo mamah!"); };
+            lblReg.Click += new EventHandler(lblReg_Click);
+            
 
             // Add all controls to card
             card.Controls.Add(lblUserTitle); card.Controls.Add(txtUser);
             card.Controls.Add(lblPassTitle); card.Controls.Add(txtPass);
             card.Controls.Add(btnTogglePass); card.Controls.Add(btnLogin);
             card.Controls.Add(btnForgotPass); card.Controls.Add(lblReg);
+            this.AcceptButton = btnLogin;
 
             // --- 4. Premium Footer ---
             pnlFooter = new Panel();
@@ -205,8 +207,24 @@ namespace PetShopApp
 
         private void BtnForgotPass_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Mamma, eikhaney amra Password Recovery system boshabo pore!", "Forgot Password");
+            // Notun recovery page er object banailam
+            RecoverPassword recoveryPage = new RecoverPassword();
+
+            // Eita diye page ta pop-up hisebe open hobe
+            recoveryPage.ShowDialog();
         }
+        private void lblReg_Click(object sender, EventArgs e)
+        {
+            // CreateAccount form-er ekta object banalam
+            CreateAccount regForm = new CreateAccount();
+
+            // Form-ta show korlam
+            regForm.Show();
+
+            // (Optional) Login form-ta jodi hide korte chao:
+            // this.Hide(); 
+        }
+
 
         private void CustomerLogin_Click(object sender, EventArgs e)
         {
@@ -221,14 +239,28 @@ namespace PetShopApp
                 try
                 {
                     con.Open();
-                    string query = "SELECT UserRole FROM Users WHERE Username=@user AND Password=@pass AND UserRole='Customer'";
+                    string query = "SELECT Username FROM Users WHERE Username=@user AND Password=@pass AND UserRole='Customer'";
                     SqlCommand cmd = new SqlCommand(query, con);
                     cmd.Parameters.AddWithValue("@user", txtUser.Text.Trim());
                     cmd.Parameters.AddWithValue("@pass", txtPass.Text.Trim());
 
                     SqlDataReader dr = cmd.ExecuteReader();
-                    if (dr.Read()) { MessageBox.Show("Success Mamah! Portal-e jao."); }
-                    else { MessageBox.Show("ID/Password thik nai!"); }
+                    if (dr.Read())
+                    {
+                        // 🔥 LOGIN SUCCESS! Username save kore rakhlam global variable-e
+                        UserSession.CurrentUsername = dr["Username"].ToString();
+
+                        MessageBox.Show("Welcome to out shop .  \n press enter tp proceed! .");
+
+                        // Akhon Dashboard open koro
+                        CustomersDashboard dash = new CustomersDashboard();
+                        dash.Show();
+                        this.Hide(); // Login form hide koro
+                    }
+                    else
+                    {
+                        MessageBox.Show("ID/Password thik nai!");
+                    }
                 }
                 catch (Exception ex) { MessageBox.Show("DB Error: " + ex.Message); }
             }

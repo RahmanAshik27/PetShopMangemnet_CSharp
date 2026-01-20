@@ -35,7 +35,7 @@ namespace PetShopApp
                 try
                 {
                     con.Open();
-                    // Connection thik thakle kichu korar dorkar nai, error khaile catch-e jabe
+                    
                 }
                 catch (Exception ex)
                 {
@@ -51,7 +51,7 @@ namespace PetShopApp
             this.MinimumSize = new Size(1000, 700);
 
             // --- 1. Header Section ---
-            Panel header = new Panel { Dock = DockStyle.Top, Height = 130, BackColor = Color.White };
+            Panel header = new Panel { Dock = DockStyle.Top, Height = 130, BackColor = Color.FromArgb(23, 31, 42) };
             this.Controls.Add(header);
 
             Label lblWelcome = new Label
@@ -66,7 +66,7 @@ namespace PetShopApp
             header.Controls.Add(lblWelcome);
 
             // --- 2. Sidebar Section ---
-            Panel sidebar = new Panel { Dock = DockStyle.Left, Width = 260, BackColor = Color.FromArgb(44, 62, 80) };
+            Panel sidebar = new Panel { Dock = DockStyle.Left, Width = 260, BackColor = Color.FromArgb(31, 41, 55) };
             this.Controls.Add(sidebar);
 
             // --- 3. Main Content Area ---
@@ -84,11 +84,11 @@ namespace PetShopApp
             this.Controls.Add(mainPanel);
 
             // --- 4. Sidebar Elements ---
-            PictureBox profilePic = new PictureBox { Size = new Size(110, 110), Location = new Point(75, 20), BackColor = Color.Transparent, SizeMode = PictureBoxSizeMode.StretchImage };
+            PictureBox profilePic = new PictureBox { Size = new Size(110, 110), Location = new Point(75, 30), BackColor = Color.Transparent, SizeMode = PictureBoxSizeMode.StretchImage };
             profilePic.Paint += ProfilePic_Paint;
             sidebar.Controls.Add(profilePic);
 
-            Label lblLogo = new Label { Text = "🐾 PET SHOP", Font = new Font("Segoe UI", 18, FontStyle.Bold), ForeColor = Color.White, Location = new Point(38, 140), AutoSize = true };
+            Label lblLogo = new Label { Text = "🐾 PET SHOP", Font = new Font("Segoe UI", 18, FontStyle.Bold), ForeColor = Color.White, Location = new Point(38, 150), AutoSize = true };
             sidebar.Controls.Add(lblLogo);
 
             // Navigation Buttons
@@ -99,7 +99,7 @@ namespace PetShopApp
             AddModernBtn(sidebar, "Delivery Login", startY + 195, DeliveryLogin_Click);
 
             // Footer Section
-            Panel footer = new Panel { Dock = DockStyle.Bottom, Height = 80, BackColor = Color.FromArgb(44, 62, 80) };
+            Panel footer = new Panel { Dock = DockStyle.Bottom, Height = 60, BackColor = Color.FromArgb(230, 126, 34) };
             Label lblFooter = new Label { Text = "🐾 \"Pets are not our whole life...\" | Premium Pet Care © 2026", Font = new Font("Segoe UI", 16, FontStyle.Bold | FontStyle.Italic), ForeColor = Color.White, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter };
             footer.Controls.Add(lblFooter);
             this.Controls.Add(footer);
@@ -138,6 +138,7 @@ namespace PetShopApp
             // Login Form open hobe jeta Database check korbe
             LoginForm login = new LoginForm();
             login.Show();
+            
         }
 
         private void CustomerLogin_Click(object sender, EventArgs e)
@@ -149,7 +150,16 @@ namespace PetShopApp
 
         private void ReviewPage_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Pet Reviews Loading from Database...");
+            // 1. Reset Sidebar Colors (Jate UI ta sundor lage
+
+            // 2. Form ta call koro
+            ReviewPageCheck reviews = new ReviewPageCheck();
+
+            // 3. Form ta dekhaw
+            reviews.Show();
+
+            // 4. Current AdminDashboard ta hide koro (optional, jodi tui duto window eksathe na dekhate chash)
+           
         }
 
         private void DeliveryLogin_Click(object sender, EventArgs e)
