@@ -3,71 +3,83 @@
   "WorkspaceRootPath": "E:\\projectWork\\PetShopApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\showreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\showreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\givereview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\givereview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\reviewpagecheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\reviewpagecheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\reviewpagecheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\reviewpagecheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\customersdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\customersdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\customerloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\customerloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\reviewloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\reviewloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|PetShopApp||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\customerpaymentcashmemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\customerpaymentcashmemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\customerpaymentcashmemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\customerpaymentcashmemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\customerpaymentcashmemo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\admininventorymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\customersdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\customersdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\customersdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\customersdashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\showreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\showreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\givereview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\givereview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\reviewpagecheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\reviewpagecheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\reviewpagecheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\reviewpagecheck.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\customerloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\customerloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\reviewloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\reviewloginpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\admininventorymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\admininventorymanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\createaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\createaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\createaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\recoverpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|E:\\projectWork\\PetShopApp\\petshopapp\\recoverpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\recoverpassword.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|e:\\projectwork\\petshopapp\\petshopapp\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}",
-      "RelativeMoniker": "D:0:0:{8BBD43FD-F9D0-4B85-989F-886F473B78E8}|PetShopApp\\PetShopApp.csproj|solutionrelative:petshopapp\\properties\\resources.resx||{81828910-B8B3-4D2B-99A3-067027C180C1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -89,40 +101,62 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\LoginForm.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\LoginForm.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\LoginForm.cs [Design]",
+              "RelativeToolTip": "PetShopApp\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T06:26:19.91Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\Form1.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\Form1.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\Form1.cs",
+              "RelativeToolTip": "PetShopApp\\Form1.cs",
+              "ViewState": "AgIAAIgBAAAAAAAAAAAgwJMBAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T03:21:37.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\Form1.cs",
               "RelativeDocumentMoniker": "PetShopApp\\Form1.cs",
               "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\Form1.cs [Design]",
               "RelativeToolTip": "PetShopApp\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T19:09:47.234Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-19T19:09:47.234Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ShowReview.cs",
-              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\ShowReview.cs",
-              "RelativeDocumentMoniker": "PetShopApp\\ShowReview.cs",
-              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\ShowReview.cs",
-              "RelativeToolTip": "PetShopApp\\ShowReview.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAtwBQAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T18:00:49.311Z",
-              "EditorCaption": ""
+              "DocumentIndex": 3,
+              "Title": "PetShopApp",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\PetShopApp.csproj",
+              "RelativeDocumentMoniker": "PetShopApp\\PetShopApp.csproj",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\PetShopApp.csproj",
+              "RelativeToolTip": "PetShopApp\\PetShopApp.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-17T04:18:09.754Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GiveReview.cs",
-              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\GiveReview.cs",
-              "RelativeDocumentMoniker": "PetShopApp\\GiveReview.cs",
-              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\GiveReview.cs",
-              "RelativeToolTip": "PetShopApp\\GiveReview.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAD4vx4AAAAIAAAAAAAAAA==",
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\LoginForm.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\LoginForm.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\LoginForm.cs",
+              "RelativeToolTip": "PetShopApp\\LoginForm.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAwwDUAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T17:10:35.742Z",
+              "WhenOpened": "2026-01-17T06:07:27.948Z",
               "EditorCaption": ""
             },
             {
@@ -133,39 +167,105 @@
               "RelativeDocumentMoniker": "PetShopApp\\AdminDashboard.cs",
               "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\AdminDashboard.cs",
               "RelativeToolTip": "PetShopApp\\AdminDashboard.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAA1wCkAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAGkDAAAAAAAAAAAAAG0DAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T16:55:15.744Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-17T16:55:15.744Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\Form1.cs",
-              "RelativeDocumentMoniker": "PetShopApp\\Form1.cs",
-              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\Form1.cs",
-              "RelativeToolTip": "PetShopApp\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "CustomersDashboard.cs [Design]",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomersDashboard.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\CustomersDashboard.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomersDashboard.cs [Design]",
+              "RelativeToolTip": "PetShopApp\\CustomersDashboard.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T03:21:37.353Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T01:46:20.429Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "AdminDashboard.cs [Design]",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\AdminDashboard.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\AdminDashboard.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\AdminDashboard.cs [Design]",
+              "RelativeToolTip": "PetShopApp\\AdminDashboard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T03:19:12.526Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CustomerPaymentCashMemo.cs [Design]",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomerPaymentCashMemo.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\CustomerPaymentCashMemo.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomerPaymentCashMemo.cs [Design]",
+              "RelativeToolTip": "PetShopApp\\CustomerPaymentCashMemo.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T01:46:58.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CustomerPaymentCashMemo.cs",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomerPaymentCashMemo.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\CustomerPaymentCashMemo.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomerPaymentCashMemo.cs",
+              "RelativeToolTip": "PetShopApp\\CustomerPaymentCashMemo.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAuwBAAAACYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T04:26:31.437Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ShowReview.cs",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\ShowReview.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\ShowReview.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\ShowReview.cs",
+              "RelativeToolTip": "PetShopApp\\ShowReview.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwBQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T18:00:49.311Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GiveReview.cs",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\GiveReview.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\GiveReview.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\GiveReview.cs",
+              "RelativeToolTip": "PetShopApp\\GiveReview.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAD4vx4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T17:10:35.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CustomersDashboard.cs",
+              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomersDashboard.cs",
+              "RelativeDocumentMoniker": "PetShopApp\\CustomersDashboard.cs",
+              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomersDashboard.cs",
+              "RelativeToolTip": "PetShopApp\\CustomersDashboard.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAQwA8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-18T13:59:49.095Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "ReviewPageCheck.cs [Design]",
               "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\ReviewPageCheck.cs",
               "RelativeDocumentMoniker": "PetShopApp\\ReviewPageCheck.cs",
               "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\ReviewPageCheck.cs [Design]",
               "RelativeToolTip": "PetShopApp\\ReviewPageCheck.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T18:18:06.84Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-19T18:18:06.84Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 13,
               "Title": "ReviewPageCheck.cs",
               "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\ReviewPageCheck.cs",
               "RelativeDocumentMoniker": "PetShopApp\\ReviewPageCheck.cs",
@@ -173,12 +273,11 @@
               "RelativeToolTip": "PetShopApp\\ReviewPageCheck.cs",
               "ViewState": "AgIAAHAAAAAAAAAAAAAuwHcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T14:37:10.319Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-19T14:37:10.319Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "ReviewLogInPage.cs",
               "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\ReviewLogInPage.cs",
               "RelativeDocumentMoniker": "PetShopApp\\ReviewLogInPage.cs",
@@ -186,38 +285,11 @@
               "RelativeToolTip": "PetShopApp\\ReviewLogInPage.cs",
               "ViewState": "AgIAAOoAAAAAAAAAAIA4wAQBAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T15:01:39.347Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-19T15:01:39.347Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CustomerPaymentCashMemo.cs",
-              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomerPaymentCashMemo.cs",
-              "RelativeDocumentMoniker": "PetShopApp\\CustomerPaymentCashMemo.cs",
-              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomerPaymentCashMemo.cs",
-              "RelativeToolTip": "PetShopApp\\CustomerPaymentCashMemo.cs",
-              "ViewState": "AgIAAIMBAAAAAAAAAAAUwJkBAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T04:26:31.437Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CustomersDashboard.cs",
-              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomersDashboard.cs",
-              "RelativeDocumentMoniker": "PetShopApp\\CustomersDashboard.cs",
-              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomersDashboard.cs",
-              "RelativeToolTip": "PetShopApp\\CustomersDashboard.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAQwCMAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-18T13:59:49.095Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "CustomerLoginPage.cs",
               "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\CustomerLoginPage.cs",
               "RelativeDocumentMoniker": "PetShopApp\\CustomerLoginPage.cs",
@@ -225,12 +297,11 @@
               "RelativeToolTip": "PetShopApp\\CustomerLoginPage.cs",
               "ViewState": "AgIAALAAAAAAAAAAAAAwwBMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T16:06:17.185Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-17T16:06:17.185Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "AdminInventoryManagement.cs",
               "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\AdminInventoryManagement.cs",
               "RelativeDocumentMoniker": "PetShopApp\\AdminInventoryManagement.cs",
@@ -238,37 +309,11 @@
               "RelativeToolTip": "PetShopApp\\AdminInventoryManagement.cs",
               "ViewState": "AgIAAF0AAAAAAAAAAAAiwG0AAACgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-18T06:33:58.827Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-18T06:33:58.827Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "PetShopApp",
-              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\PetShopApp.csproj",
-              "RelativeDocumentMoniker": "PetShopApp\\PetShopApp.csproj",
-              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\PetShopApp.csproj",
-              "RelativeToolTip": "PetShopApp\\PetShopApp.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-01-17T04:18:09.754Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "LoginForm.cs",
-              "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\LoginForm.cs",
-              "RelativeDocumentMoniker": "PetShopApp\\LoginForm.cs",
-              "ToolTip": "E:\\projectWork\\PetShopApp\\PetShopApp\\LoginForm.cs",
-              "RelativeToolTip": "PetShopApp\\LoginForm.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAswL8AAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T06:07:27.948Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "RecoverPassword.cs",
               "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\RecoverPassword.cs",
               "RelativeDocumentMoniker": "PetShopApp\\RecoverPassword.cs",
@@ -276,12 +321,11 @@
               "RelativeToolTip": "PetShopApp\\RecoverPassword.cs",
               "ViewState": "AgIAAIcAAAAAAAAAAAAswJcAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T16:05:23.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-17T16:05:23.533Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "CreateAccount.cs",
               "DocumentMoniker": "E:\\projectWork\\PetShopApp\\PetShopApp\\CreateAccount.cs",
               "RelativeDocumentMoniker": "PetShopApp\\CreateAccount.cs",
@@ -289,8 +333,7 @@
               "RelativeToolTip": "PetShopApp\\CreateAccount.cs",
               "ViewState": "AgIAAJ4AAAAAAAAAAAAIwKIAAABwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:49:51.613Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-17T13:49:51.613Z"
             }
           ]
         }

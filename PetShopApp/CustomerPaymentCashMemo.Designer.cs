@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "CustomerPaymentCashMemo";
             this.Text = "CustomerPaymentCashMemo";
-           
+            this.Load += new System.EventHandler(this.CustomerPaymentCashMemo_Load);
             this.ResumeLayout(false);
 
         }
